@@ -6,39 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Javascript</title>
-    <style>
-        .blue {
-            background: blue;
-            color: #fff;
-        }
-    </style>
+
 </head>
 
 <body>
 
     <button id="btn">Клик</button>
     <div id="content"></div>
-
-    <script>
-        document.getElementById('btn').onclick = function () {
-            document.getElementById('btn').setAttribute('class', 'blue');
-            return false;
-        };
-
-        document.getElementsByClassName('blue').onclick = function () {
-            document.getElementById('btn').removeAttribute('class', 'blue');
-        }
-    </script>
-
-
-
-
-
-
-
-
-
-
 
     <script src="/js/main.js"></script>
 </body>
