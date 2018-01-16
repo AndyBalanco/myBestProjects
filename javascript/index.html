@@ -6,13 +6,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Javascript</title>
+    <style>
+        #body {
+            min-height: 400px;
+            border: 1px solid #eee;
+        }
 
+        .menu-wrapper {
+            background: #eee;
+            width: 300px;
+            transition: all ease 1s;
+        }
+
+        .menu {
+
+            display: none;
+            transition: all ease 1s;
+            position: relative;
+        }
+
+        .menu.open {
+            display: block;
+            transition: all ease 1s;
+        }
+
+        .menu.hidden {
+            display: none;
+        }
+    </style>
 </head>
 
-<body>
+<body id="body">
+    <div class="menu-wrapper">
+        <button id="btn">Меню</button>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="#">Link</a>
+            </li>
+            <li>
+                <a href="#">Link</a>
+            </li>
+            <li>
+                <a href="#">Link</a>
+            </li>
+            <li>
+                <a href="#">Link</a>
+            </li>
+        </ul>
+    </div>
 
-    <button id="btn">Клик</button>
-    <div id="content"></div>
+
+
+    <script>
+        var btn = document.querySelector('#btn');
+        var menu = document.querySelector('.menu');
+
+
+        btn.addEventListener('click', function () {
+            menu.classList.toggle('open');
+        });
+    </script>
 
     <script src="/js/main.js"></script>
 </body>
