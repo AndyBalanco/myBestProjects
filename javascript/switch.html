@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Switch</title>
+    <style>
+        .inp-wrap {
+            background: rgb(253, 253, 253);
+            position: relative;
+            padding: 5px;
+            max-width: 350px;
+            min-height: auto;
+            margin: auto;
+            border: 5px solid rgb(200, 200, 200);
+        }
+
+        #question-wrap {
+            background: rgb(253, 253, 253);
+            position: relative;
+            display: none;
+            padding: 10px 5px;
+            max-width: 358px;
+            min-height: auto;
+            margin: auto;
+            border: 1px solid rgb(200, 200, 200);
+            margin: 10px auto;
+            transition: all ease 1s;
+        }
+
+        #question-wrap.show {
+            display: block;
+            transition: all ease 1s;
+        }
+
+        .q {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #eee;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        #inp {
+            padding: 1px 5px;
+            text-transform: capitalize;
+        }
+
+        #result {
+            background: rgb(255, 255, 255);
+            padding: 10px;
+            margin: 10px 0 0;
+            transition: all ease 1s;
+        }
+
+        #result.green {
+            background: rgb(210, 255, 238);
+            color: green;
+        }
+
+        #result.red {
+            background: rgb(255, 237, 237);
+            color: red;
+        }
+
+        #result.orange {
+            color: orangered;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="inp-wrap">
+        <span class="q">?</span>
+        <h3>Проверить стоимость фруктов</h3>
+        <p id="pinfo">Фрукты в наличии: </p>
+        <input id="inp" type="text" name="" placeholder="Поиск...">
+        <button id="btn">Проверить</button>
+        <button id="clear">Сбросить</button>
+        <div id="result"></div>
+    </div>
+    <div id="question-wrap">
+        <h5>Фунции этого создания:</h5>
+        <ol>
+            <li>ищет по трем продуктам из массива</li>
+            <li>подсвечиваются результаты</li>
+            <li>обрезаются пробелы trim()</li>
+            <li>корректируется ввод в соотвествии массивом</li>
+            <li>используется switch(), if(), function(),</li>
+            <li>поиск по нажатию enter</li>
+            <li>сброс по нажатию esc</li>
+
+        </ol>
+    </div>
+
+    <script>
+        var inp = document.getElementById('inp'),
+            massive = ['Banan', 'Orange', 'Lemon'],
+            p = document.getElementById('pinfo'),
+            btn = document.getElementById('btn'),
+            clear = document.getElementById('clear'),
+            result = document.getElementById('result');
+
+        p.innerHTML = 'Фрукты в наличии: ' + massive.join(', ') + '.';
+
+        btn.addEventListener('click', function () {
+            function searchFunc(val) {
+                return (val[0].toUpperCase() + val.substring(1).toLowerCase()).trim();
+            }
+            function productText(key, price) {
+                key = [key];
+                price = "$ " + price;
+                result.innerHTML = "Стоимость: " + massive[key] + ": " + price;
+            }
+            function showGreen() {
+                modclass = result.removeAttribute('class');
+                modclass = result.classList.add('green');
+            }
+            function productRes(key, price) {
+                productText(key, price);
+                showGreen();
+            }
+            switch (searchFunc(inp.value)) {
+                case massive[0]:
+                    productRes(0, 5);
+                    break;
+                case massive[1]:
+                    productRes(1, 7);
+                    break;
+                case massive[2]:
+                    productRes(2, 4);
+                    break;
+                default:
+                    result.innerHTML = 'Таких фруктов нет в наличии.';
+                    notifRed();
+            }
+            if (inp.value == "") {
+                result.innerHTML = "Уважаемый покупатель, вы ничего не ввели."
+                result.classList.add('orange');
+            };
+
+
+
+            function notifRed() {
+                modclass = result.removeAttribute('class');
+                modclass = result.classList.add('red');
+            }
+        });
+
+        clear.addEventListener('click', function () {
+            inp.value = "";
+            result.innerHTML = "Поиск сброшен";
+            result.removeAttribute('class');
+        });
+
+        if (inp.value == 0) {
+            inp.value = "";
+            result.innerHTML = "Пожалуйста начните ввод."
+            result.classList.add('orange');
+        };
+
+        if (document.layers) {
+            document.captureEvents(Event.KEYDOWN);
+        }
+
+        inp.onkeydown = function () {
+            if (event.which || event.keyCode) {
+                if ((event.which == 13) || (event.keyCode == 13)) {
+                    btn.click();
+                }
+                if ((event.which == 27) || (event.keyCode == 27)) {
+                    clear.click();
+                }
+            };
+        };
+
+        var q = document.getElementsByClassName('q')[0],
+            quest = document.getElementById('question-wrap');
+        q.addEventListener('click', function () {
+            quest.classList.toggle('show');
+        })
+
+    </script>
+</body>
+
+</html>

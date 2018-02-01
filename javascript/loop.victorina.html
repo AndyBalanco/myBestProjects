@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Цыклы</title>
+</head>
+
+<body>
+
+    <button onclick="testStart()">Начать викторину</button>
+
+    <div id="result"></div>
+
+
+    <script>
+
+        var Mass = ['1 вопрос', '2 вопорос', '3 вопрос'];
+        var Answers = ['1', '2', '3'];
+        var Result = document.getElementById('result');
+
+        function testStart() {
+
+            for (var i = 0; i < Mass.length; i++) {
+                var answer = prompt(Mass[i]);
+                Result.innerHTML += '<div class="item-' + i + '">' + answer + '</div>';
+                if (answer == Answers[i]) {
+                    Result.innerHTML += '<div class="answer-' + i + '">' + 'Верно' + '</div>';
+                }else{
+                    Result.innerHTML += '<div class="answer-' + i + '">' + 'Неверно' + '</div>';
+                }
+            }
+        };
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Object</title>
+    <style>
+        .inp-wrap {
+            background: rgb(253, 253, 253);
+            position: relative;
+            padding: 5px;
+            max-width: 350px;
+            min-height: auto;
+            margin: auto;
+            border: 5px solid rgb(200, 200, 200);
+        }
+
+        #question-wrap {
+            background: rgb(253, 253, 253);
+            position: relative;
+            display: none;
+            padding: 10px 5px;
+            max-width: 358px;
+            min-height: auto;
+            margin: auto;
+            border: 1px solid rgb(200, 200, 200);
+            margin: 10px auto;
+            transition: all ease 1s;
+        }
+
+        #question-wrap.show {
+            display: block;
+            transition: all ease 1s;
+        }
+
+        .q {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #eee;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        #inp {
+            padding: 1px 5px;
+            text-transform: capitalize;
+        }
+
+        #result {
+            background: rgb(255, 255, 255);
+            padding: 10px;
+            margin: 10px 0 0;
+            transition: all ease 1s;
+        }
+
+        #result.green {
+            background: rgb(210, 255, 238);
+            color: green;
+        }
+
+        #result.red {
+            background: rgb(255, 237, 237);
+            color: red;
+        }
+
+        #result.orange {
+            color: orangered;
+        }
+    </style>
+</head>
+
+<body>
+
+
+<button id="btn">Click</button>
+<p id="result"></p>
+
+    
+<script>
+
+let btn = document.getElementById('btn');
+let result = document.getElementById('result');
+
+let obj = {
+    name: 'Andy',
+    firstname: 'Bal',
+    obj2: {
+        age: 33,
+        length: 176,
+        funct: function func(a,b) {return a + b;}
+    }
+}
+
+btn.addEventListener('click', function () {  
+    result.innerHTML = obj.obj2.funct(10, 10);
+})
+
+
+</script>
+</body>
+
+</html>
