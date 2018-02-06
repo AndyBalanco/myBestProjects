@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Acardion</title>
+    <style>
+        button.acordion {
+            background: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            transition: 0.4s;
+            position: relative;
+            z-index: 1;
+        }
+
+        button.acordion.active,
+        button.acordion:hover {
+            background: #ddd;
+            transition: 0.4s;
+        }
+
+        div.pannel {
+            background: rgb(245, 245, 245);
+            transition: all 0.7s;
+            padding: 0 20px;
+            height: 0;
+            min-height: 0;
+            opacity: 0;
+        }
+
+        div.pannel.show {
+            padding: 20px;
+            opacity: 1;
+            transition: 0.7s;
+            min-height: 100px;
+        }
+
+
+        #myInput {
+            width: auto;
+            font-size: 16px;
+            padding: 12px 20px 12px 5px;
+            border: 1px solid #ddd;
+            margin-bottom: 12px;
+        }
+
+        #myUl {
+            padding: 0;
+            margin: 0;
+        }
+
+        #myUl li a {
+            border: 1px solid #ddd;
+            margin-top: 1px;
+            background: #f6f6f6;
+            padding: 12px;
+            text-decoration: none;
+            font-size: 18px;
+            color: black;
+            display: block;
+        }
+
+        #myUl li a.header {
+            background: #e2e2e2;
+            cursor: default;
+        }
+
+        #myUl li a:hover:not(.header) {
+            background: #eee;
+        }
+
+        #dropdown {
+            background: #eee;
+            border: 1px solid rgb(209, 209, 209);
+            width: 200px;
+            padding: 10px;
+            margin: 0;
+            position: absolute;
+            display: none;
+        }
+        #dropdown.open {
+            display: block;
+        }
+        #dropdown li {
+            list-style: none;
+        }
+        #dropdown li a {
+            color: #333;
+            font-size: 18px;
+            text-decoration: none;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="acordion">Section 1</button>
+    <div class="pannel">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. At odio odit dolore corrupti harum molestias accusantium labore,
+        voluptatem consequuntur fuga dolorem, eligendi possimus pariatur recusandae maxime ea tempora distinctio in? Lorem
+        ipsum dolor sit, amet consectetur adipisicing elit. At odio odit dolore corrupti harum molestias accusantium labore,
+        voluptatem consequuntur fuga dolorem, eligendi possimus pariatur recusandae maxime ea tempora distinctio in? Lorem
+        ipsum dolor sit, amet consectetur adipisicing elit. At odio odit dolore corrupti harum molestias accusantium labore,
+        voluptatem consequuntur fuga dolorem, eligendi possimus pariatur recusandae maxime ea tempora distinctio in? Lorem
+        ipsum dolor sit, amet consectetur adipisicing elit. At odio odit dolore corrupti harum molestias accusantium labore,
+        voluptatem consequuntur fuga dolorem, eligendi possimus pariatur recusandae maxime ea tempora distinctio in?
+    </div>
+    <button class="acordion">Section 2</button>
+    <div class="pannel">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. At odio odit dolore corrupti harum molestias accusantium labore,
+        voluptatem consequuntur fuga dolorem, eligendi possimus pariatur recusandae maxime ea tempora distinctio in?
+    </div>
+    <button class="acordion">Section 3</button>
+    <div class="pannel">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. At odio odit dolore corrupti harum molestias accusantium labore,
+        voluptatem consequuntur fuga dolorem, eligendi possimus pariatur recusandae maxime ea tempora distinctio in?
+    </div>
+
+    <hr>
+    <h2>
+        Search
+    </h2>
+
+    <input type="text" id="myInput" placeholder="Search for names">
+    <ul id="dropdown">
+        <li>
+            <a href="">Andy</a>
+        </li>
+        <li>
+            <a href="">Bogdan</a>
+        </li>
+        <li>
+            <a href="">Anton</a>
+        </li>
+    </ul>
+    <ul id="myUl">
+        <li>
+            <a class="header" href="#">А</a>
+        </li>
+        <li>
+            <a href="#">Andy</a>
+        </li>
+        <li>
+            <a href="#">Anton</a>
+        </li>
+        <li>
+            <a class="header" href="#">B</a>
+        </li>
+        <li>
+            <a href="#">Bogdan</a>
+        </li>
+        <li>
+            <a href="#">Boris</a>
+        </li>
+        <li>
+            <a href="#">Ben</a>
+        </li>
+        <li>
+            <a class="header" href="#">C</a>
+        </li>
+        <li>
+            <a href="#">Cesna</a>
+        </li>
+        <li>
+            <a href="#">Cheroky</a>
+        </li>
+    </ul>
+
+</body>
+
+
+
+
+
+
+
+
+<script>
+    var acc = document.getElementsByClassName('acordion');
+
+    for (var i = 0; i < acc.length; i++) {
+        acc[i].onclick = function () {
+            this.classList.toggle('active');
+            this.nextElementSibling.classList.toggle('show');
+        }
+    };
+
+       var input = document.getElementById('myInput');
+
+    input.onkeyup = function ser() {
+        console.log("onkeyup");
+        var filter, ul, li, a, i; 
+        filter = input.value.toUpperCase();
+        ul = document.getElementById('myUl');
+        li = ul.getElementsByTagName('li');
+
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName('a')[0];
+            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
+
+    var dropdown = document.getElementById('dropdown'),
+        alink = document.querySelectorAll('#dropdown li a');
+
+input.addEventListener('click', function () {
+    dropdown.classList.toggle('open');
+});
+
+for(var i = 0; i < alink.length; i++) {
+    alink[i].addEventListener('click', function (event) {
+        event.preventDefault();
+        var el = event.currentTarget;
+        input.value = el.innerHTML;
+        dropdown.classList.remove('open');
+
+        var ev = new Event("keyup");
+        input.dispatchEvent(ev); //симулирование события onkeyup
+        
+    });
+    
+}
+</script>
+
+
+
+
+
+</html>

@@ -1,0 +1,6 @@
+.menu {
+    display: none;
+}
+.menu.open {
+    display: block;
+}

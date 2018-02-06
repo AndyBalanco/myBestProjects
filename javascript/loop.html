@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Loop</title>
+    <style>
+        *,
+        *:before,
+        *:after {
+            box-sizing: border-box;
+        }
+
+#content {
+    background: #eee;
+    width: 300px;
+    min-height: 120px;
+}
+li.link a {
+    color: rgb(241, 0, 0)
+}
+    </style>
+</head>
+
+<body>
+<ul id="list">
+    <li><a href="#">Link 1</a></li>
+    <li><a href="#">Link 2</a></li>
+    <li><a href="#">Link 3</a></li>
+    <li><a href="#">Link 4</a></li>
+</ul>
+
+<button id="btn">Стереть класс</button>
+</body>
+
+<script>
+var list = document.querySelectorAll('#list li'),
+    btn = document.getElementById('btn');
+
+for(var i = 0; i < list.length; i++) {
+    list[i].classList.add('link');
+}
+
+    btn.addEventListener('click', function () {
+    for(var j = 0; j < list.length; j++) {
+        list[j].classList.remove('link');
+        list[j].removeAttribute('class');
+    }
+
+})
+
+</script>
+
+</html>

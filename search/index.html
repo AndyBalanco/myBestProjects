@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Javascript Simle menu</title>
+
+</head>
+
+<body id="body">
+    <div id="nav"></div>
+
+    <div id="search-container">
+        <h3 class="search-title">Поиск </h3>
+
+        <input id="search" class="search" type="text" name="search" placeholder="Начни вводить слово...">
+        <button id="btn">Искать</button>
+
+
+    </div>
+
+    <div id="myModal" class="modal">
+
+        <div class="content">
+            <span class="close">&times;</span>
+            Вы ищите:
+            <p></p>
+        </div>
+    </div>
+    <script>
+        var search = document.getElementById('search'),
+            btn = document.getElementById('btn'),
+            modal = document.getElementById('myModal'),
+            sp = document.getElementsByClassName('close')[0];
+
+            search.onfocus = function () {
+                style.border = '0px';
+            }
+
+        btn.onclick = function () {
+            modal.style.display = 'block';
+        }
+        sp.onclick = function () {
+            modal.style.display = 'none';
+        }
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        btn.addEventListener('click', function () {
+            document.querySelector('.content p').innerHTML = document.getElementById('search').value;
+        });
+
+    </script>
+</body>
+
+</html>

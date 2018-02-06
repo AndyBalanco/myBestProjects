@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Dropdown</title>
+</head>
+<body>
+            <div class="row fadeIn wow">
+                <div id="dropdown" class="dropdown">
+                    <input value="Choose country">
+                    <ul class="select-items">
+                        <li>Item 1</li>
+                        <li>Item 2</li>
+                        <li>Item 3</li>
+                    </ul>
+                </div>
+                <div id="dropdown" class="dropdown">
+                    <input value="Choose category">
+                    <ul class="select-items">
+                        <li>Category 1</li>
+                        <li>Category 2</li>
+                        <li>Category 3</li>
+                    </ul>
+                </div>
+            </div>
+
+            <script>
+            
+                function dropdown() {
+
+                    var dropdown = document.querySelectorAll('.dropdown input');
+
+                    for (var i = 0; i < dropdown.length; i++) {
+                        dropdown[i].addEventListener('click', function () {
+
+
+                            var dropdownul = document.querySelectorAll(".show")[0];
+
+                            this.parentNode.getElementsByTagName("ul")[0].classList.toggle("show");
+
+                        });
+                    }
+                }
+                /*----------------------------------------------------------  Dropdowns  */
+
+                function dropdown_li() {
+
+                    var dropdownLinks = document.querySelectorAll('.dropdown li');
+
+                    for (var i = 0; i < dropdownLinks.length; i++) {
+                        dropdownLinks[i].addEventListener('click', function () {
+
+                            var dropdownul = document.querySelectorAll(".show")[0];
+                            dropdownul && dropdownul.classList.remove("show");
+
+                            var li_text = this.textContent;
+                            this.parentNode.parentNode.getElementsByTagName("input")[0].value = li_text;
+                        }
+                        )
+                    }
+                }
+
+                var list = document.querySelectorAll('.select-items .show');
+
+                window.addEventListener('click', function (e) {
+                    for (var i = 0; i < list.length; i++) {
+                        if (document.getElementById('dropdown').contains(e.target)) {
+
+                        } else {
+                            list.style.display = 'none';
+                        }
+                    }
+                })
+                dropdown();
+                dropdown_li();
+            </script>
+</body>
+</html>

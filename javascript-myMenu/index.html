@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Javascript</title>
+    <title>Javascript Simle menu</title>
     <style>
         #body {
             min-height: 400px;
@@ -23,6 +23,8 @@
             display: none;
             transition: all ease 1s;
             position: relative;
+            list-style-type: none;
+            margin-left: -20px;
         }
 
         .menu.open {
@@ -41,33 +43,28 @@
         <button id="btn">Меню</button>
         <ul id="menu" class="menu">
             <li>
-                <a href="#">Link</a>
+                <a href="#">Link 1</a>
             </li>
             <li>
-                <a href="#">Link</a>
+                <a href="#">Link 2</a>
             </li>
             <li>
-                <a href="#">Link</a>
+                <a href="#">Link 3</a>
             </li>
             <li>
-                <a href="#">Link</a>
+                <a href="#">Link 4</a>
             </li>
         </ul>
     </div>
-
-
 
     <script>
         var btn = document.querySelector('#btn');
         var menu = document.querySelector('.menu');
 
-
         btn.addEventListener('click', function () {
             menu.classList.toggle('open');
         });
     </script>
-
-    <script src="/js/main.js"></script>
 </body>
 
 </html>
