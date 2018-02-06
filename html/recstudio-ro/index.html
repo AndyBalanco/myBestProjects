@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>RecstudioRO</title>
+    <link rel="stylesheet" type="text/css" href="css/normalize.min.css" media="screen, print" />
+    <link rel="stylesheet" type="text/css" href="css/n2-ss-1.css" media="screen, print" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" media="screen, print" />
+
+    <script type="text/javascript">
+        window.N2PRO = 1;
+        window.N2GSAP = 1;
+        window.N2PLATFORM = "joomla";
+        window.nextend = {
+            localization: {},
+            deferreds: [],
+            loadScript: function (url) {
+                n2jQuery.ready(function () {
+                    nextend.deferreds.push(n2.ajax({
+                        url: url,
+                        dataType: "script",
+                        cache: true,
+                        error: function () {
+                            console.log(arguments)
+                        }
+                    }))
+                })
+            },
+            ready: function (cb) {
+                n2.when.apply(n2, nextend.deferreds).done(function () {
+                    cb.call(window, n2)
+                })
+            }
+        };
+        window.N2SSPRO = 1;
+        window.N2SS3C = "smartslider3";
+        nextend.fontsLoaded = false;
+        nextend.fontsLoadedActive = function () {
+            nextend.fontsLoaded = true;
+        };
+        var fontData = {
+            google: {
+                families: ["Yanone Kaffeesatz:400:latin"]
+            },
+            active: function () {
+                nextend.fontsLoadedActive()
+            },
+            inactive: function () {
+                nextend.fontsLoadedActive()
+            }
+        };
+        if (typeof WebFontConfig !== 'undefined') {
+            var _WebFontConfig = WebFontConfig;
+            for (var k in WebFontConfig) {
+                if (k == 'active') {
+                    fontData.active = function () {
+                        nextend.fontsLoadedActive();
+                        _WebFontConfig.active();
+                    }
+                } else if (k == 'inactive') {
+                    fontData.inactive = function () {
+                        nextend.fontsLoadedActive();
+                        _WebFontConfig.inactive();
+                    }
+                } else if (k == 'google') {
+                    if (typeof WebFontConfig.google.families !== 'undefined') {
+                        for (var i = 0; i < WebFontConfig.google.families.length; i++) {
+                            fontData.google.families.push(WebFontConfig.google.families[i]);
+                        }
+                    }
+                } else {
+                    fontData[k] = WebFontConfig[k];
+                }
+            }
+        }
+        if (typeof WebFont === 'undefined') {
+            window.WebFontConfig = fontData;
+        } else {
+            WebFont.load(fontData);
+        }
+    </script>
+    <script type="text/javascript" src="js/n2.js"></script>
+    <script type="text/javascript" src="js/nextend-gsap.min.js"></script>
+    <script type="text/javascript" src="js/nextend-frontend.min.js"></script>
+    <script type="text/javascript" src="js/smartslider-frontend.min.js"></script>
+    <script type="text/javascript" src="js/smartslider-simple-type-frontend.min.js"></script>
+    <script type="text/javascript" src="js/nextend-webfontloader.min.js"></script>
+    <script type="text/javascript">
+        window.n2jQuery.ready((function ($) {
+            window.nextend.ready(function () {
+
+                nextend.fontsDeferred = n2.Deferred();
+                if (nextend.fontsLoaded) {
+                    nextend.fontsDeferred.resolve();
+                } else {
+                    nextend.fontsLoadedActive = function () {
+                        nextend.fontsLoaded = true;
+                        nextend.fontsDeferred.resolve();
+                    };
+                    var intercalCounter = 0;
+                    nextend.fontInterval = setInterval(function () {
+                        if (intercalCounter > 3 || document.documentElement.className.indexOf(
+                                'wf-active') !== -1) {
+                            nextend.fontsLoadedActive();
+                            clearInterval(nextend.fontInterval);
+                        }
+                        intercalCounter++;
+                    }, 1000);
+                }
+                new NextendSmartSliderSimple('#n2-ss-1', {
+                    "admin": false,
+                    "isStaticEdited": 0,
+                    "translate3d": 1,
+                    "callbacks": "",
+                    "randomize": {
+                        "randomize": 0,
+                        "randomizeFirst": 0
+                    },
+                    "align": "normal",
+                    "isDelayed": 0,
+                    "load": {
+                        "fade": 1,
+                        "scroll": 0
+                    },
+                    "playWhenVisible": 1,
+                    "responsive": {
+                        "desktop": 1,
+                        "tablet": 1,
+                        "mobile": 1,
+                        "onResizeEnabled": true,
+                        "type": "fullpage",
+                        "downscale": 1,
+                        "upscale": 1,
+                        "minimumHeight": -1,
+                        "maximumHeight": -1,
+                        "maximumSlideWidth": 3000,
+                        "maximumSlideWidthLandscape": 3000,
+                        "maximumSlideWidthTablet": 3000,
+                        "maximumSlideWidthTabletLandscape": 3000,
+                        "maximumSlideWidthMobile": 3000,
+                        "maximumSlideWidthMobileLandscape": 3000,
+                        "maximumSlideWidthConstrainHeight": 0,
+                        "forceFull": 1,
+                        "constrainRatio": 1,
+                        "verticalOffsetSelectors": "#wpadminbar",
+                        "focusUser": 0,
+                        "focusAutoplay": 0,
+                        "deviceModes": {
+                            "desktopPortrait": 1,
+                            "desktopLandscape": 0,
+                            "tabletPortrait": 1,
+                            "tabletLandscape": 0,
+                            "mobilePortrait": 1,
+                            "mobileLandscape": 0
+                        },
+                        "normalizedDeviceModes": {
+                            "unknownUnknown": ["unknown", "Unknown"],
+                            "desktopPortrait": ["desktop", "Portrait"],
+                            "desktopLandscape": ["desktop", "Portrait"],
+                            "tabletPortrait": ["tablet", "Portrait"],
+                            "tabletLandscape": ["tablet", "Portrait"],
+                            "mobilePortrait": ["mobile", "Portrait"],
+                            "mobileLandscape": ["mobile", "Portrait"]
+                        },
+                        "verticalRatioModifiers": {
+                            "unknownUnknown": 1,
+                            "desktopPortrait": 1,
+                            "desktopLandscape": 1,
+                            "tabletPortrait": 1,
+                            "tabletLandscape": 1,
+                            "mobilePortrait": 1,
+                            "mobileLandscape": 1
+                        },
+                        "minimumFontSizes": {
+                            "desktopPortrait": 1,
+                            "desktopLandscape": 1,
+                            "tabletPortrait": 1,
+                            "tabletLandscape": 1,
+                            "mobilePortrait": 1,
+                            "mobileLandscape": 1
+                        },
+                        "ratioToDevice": {
+                            "Portrait": {
+                                "tablet": 0.7,
+                                "mobile": 0.5
+                            },
+                            "Landscape": {
+                                "tablet": 0,
+                                "mobile": 0
+                            }
+                        },
+                        "sliderWidthToDevice": {
+                            "desktopPortrait": 1500,
+                            "desktopLandscape": 1500,
+                            "tabletPortrait": 1050,
+                            "tabletLandscape": 0,
+                            "mobilePortrait": 750,
+                            "mobileLandscape": 0
+                        },
+                        "basedOn": "combined",
+                        "tabletPortraitScreenWidth": 800,
+                        "mobilePortraitScreenWidth": 440,
+                        "tabletLandscapeScreenWidth": 800,
+                        "mobileLandscapeScreenWidth": 440,
+                        "orientationMode": "width_and_height",
+                        "scrollFix": 0,
+                        "overflowHiddenPage": 0,
+                        "desktopPortraitScreenWidth": 1200
+                    },
+                    "controls": {
+                        "scroll": 0,
+                        "drag": 1,
+                        "touch": "horizontal",
+                        "keyboard": 1,
+                        "tilt": 0
+                    },
+                    "lazyLoad": 0,
+                    "lazyLoadNeighbor": 0,
+                    "blockrightclick": 0,
+                    "maintainSession": 0,
+                    "autoplay": {
+                        "enabled": 1,
+                        "start": 1,
+                        "duration": 37000,
+                        "autoplayToSlide": -1,
+                        "autoplayToSlideIndex": 0,
+                        "allowReStart": 0,
+                        "pause": {
+                            "click": 0,
+                            "mouse": "0",
+                            "mediaStarted": 1
+                        },
+                        "resume": {
+                            "click": 0,
+                            "mouse": "0",
+                            "mediaEnded": 1,
+                            "slidechanged": 0
+                        }
+                    },
+                    "layerMode": {
+                        "playOnce": 1,
+                        "playFirstLayer": 1,
+                        "mode": "forced",
+                        "inAnimation": "mainInEnd"
+                    },
+                    "parallax": {
+                        "enabled": 1,
+                        "mobile": 0,
+                        "is3D": 0,
+                        "animate": 1,
+                        "horizontal": "mouse",
+                        "vertical": "mouse",
+                        "origin": "slider",
+                        "scrollmove": "both"
+                    },
+                    "background.parallax.tablet": 1,
+                    "background.parallax.mobile": 1,
+                    "postBackgroundAnimations": 0,
+                    "initCallbacks": [],
+                    "allowBGImageAttachmentFixed": true,
+                    "bgAnimations": {
+                        "global": [{
+                            "type": "Flat",
+                            "tiles": {
+                                "delay": 0,
+                                "sequence": "ForwardDiagonal"
+                            },
+                            "main": {
+                                "type": "both",
+                                "duration": 1,
+                                "zIndex": 2,
+                                "current": {
+                                    "ease": "easeOutCubic",
+                                    "opacity": 0
+                                }
+                            }
+                        }],
+                        "speed": "normal"
+                    },
+                    "mainanimation": {
+                        "type": "fade",
+                        "duration": 600,
+                        "delay": 0,
+                        "ease": "easeOutQuad",
+                        "parallax": 1,
+                        "shiftedBackgroundAnimation": "auto"
+                    },
+                    "carousel": 1,
+                    "dynamicHeight": 0
+                });
+            });
+        }));
+    </script>
+</head>
+
+<body>
+    <div id="menu-wrapper">
+        <div class="container">
+            <ul id="menu">
+                <li class="main">
+                    <a href="#">Главная</a>
+                </li>
+                <li class="about">
+                    <a href="#">О нас</a>
+                </li>
+                <li>
+                    <a href="#">Контакты</a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img class="logo-center" src="/images/gd.png" alt="gd">
+                    </a>
+                </li>
+                <li class="photo">
+                    <a href="#">Фото</a>
+                </li>
+                <li class="video">
+                    <a href="#">Видео</a>
+                </li>
+                <li>
+                    <a href="#">Отзывы</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div>
+
+        <!-- Nextend Smart Slider 3 #1 - BEGIN
+        <div id="n2-ss-1-align" class="n2-ss-align">
+            <div class="n2-padding">
+                <div id="n2-ss-1" class="n2-ss-slider n2notransition n2-ss-load-fade " data-minFontSizedesktopPortrait="1" data-minFontSizedesktopLandscape="1"
+                    data-minFontSizetabletPortrait="1" data-minFontSizetabletLandscape="1" data-minFontSizemobilePortrait="1"
+                    data-minFontSizemobileLandscape="1" style="font-size: 16px;" data-fontsize="16">
+                    <div class="n2-ss-slider-1" style="">
+                        <div class="n2-ss-slider-2">
+                            <div class="n2-ss-background-animation"></div>
+                            <div class="n2-ss-slider-3" style="">
+                                <div data-slide-duration="0.008" data-id="1" class="n2-ss-slide n2-ss-canvas  n2-ss-slide-active n2-ss-slide-1" style="">
+                                    <div data-hash="3b098817f145b688346e11514e6a2e19" data-desktop="images/fn.jpeg" style="background-color: #000000;background-color: RGBA(0,0,0,0.75);"
+                                        class="n2-ss-slide-background" data-opacity="1">
+                                        <div class="n2-ss-slide-background-image n2-ss-slide-tile" style="background-image: url(images/fn.jpeg);opacity:1;background-position: 50% 50%;"></div>
+                                    </div>
+                                    <video muted="muted" loop="loop" preload="metadata" class="n2-ss-slide-background-video" data-mode="fill" data-background="background-color: #000000;background-color: RGBA(0,0,0,0.75);opacity:1;"
+                                        playsinline="playsinline" webkit-playsinline="webkit-playsinline">
+                                        <source src="/images/slideshow/video/slsider.mp4" type="video/mp4">
+                                    </video>
+                                    <div class="n2-ss-layers-container" style="">
+                                        <div class="n2-ss-layer" style="z-index:1;overflow:visible;text-align:center;left:40px;top:225px;width:auto;height:auto;"
+                                            data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6Ilx1MDQxN1x1MDQzMFx1MDQ0Mlx1MDQzNVx1MDQzY1x1MDQzZFx1MDQzNVx1MDQzZFx1MDQzOFx1MDQzNSIsImR1cmF0aW9uIjozLCJkZWxheSI6Miwib3BhY2l0eSI6MH1dfQ=="
+                                            data-class="" data-rotation="0" data-parallax="1" data-adaptivefont="1" data-generatorvisible=""
+                                            data-desktopportrait="0" data-desktoplandscape="1" data-tabletportrait="0" data-tabletlandscape="1"
+                                            data-mobileportrait="1" data-mobilelandscape="1" data-responsiveposition="1" data-responsivesize="1"
+                                            data-desktopportraitleft="40" data-desktopportraittop="225" data-desktopportraitwidth="auto"
+                                            data-desktopportraitheight="auto" data-desktopportraitalign="center" data-desktopportraitvalign="middle"
+                                            data-desktopportraitparentalign="center" data-desktopportraitparentvalign="middle"
+                                            data-desktopportraitfontsize="100" data-mobileportraitleft="3" data-mobileportraittop="149"
+                                            data-mobileportraitalign="center" data-mobileportraitvalign="middle">
+                                            <div class="n2-ss-layer-parallax">
+                                                <div class="nextend-smartslider-button-container n2-font-6a7f3bfd608618ece17619763f05c9f5-link " style="cursor: pointer; display:inline-block;white-space:nowrap;">
+                                                    <a style="display:inline-block;" class="n2-style-b4bc3edf877e3e631cd998023357cfc5-heading  " href="#about">О НАС</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="n2-ss-layer" style="z-index:2;overflow:visible;text-align:center;left:41px;top:503px;width:auto;height:auto;"
+                                            data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6Ilx1MDQxN1x1MDQzMFx1MDQ0Mlx1MDQzNVx1MDQzY1x1MDQzZFx1MDQzNVx1MDQzZFx1MDQzOFx1MDQzNSIsImR1cmF0aW9uIjo2LCJkZWxheSI6MTIsIm9wYWNpdHkiOjB9XX0="
+                                            data-class="" data-rotation="0" data-parallax="1" data-adaptivefont="1" data-generatorvisible=""
+                                            data-desktopportrait="0" data-desktoplandscape="1" data-tabletportrait="0" data-tabletlandscape="1"
+                                            data-mobileportrait="1" data-mobilelandscape="1" data-responsiveposition="1" data-responsivesize="1"
+                                            data-desktopportraitleft="41" data-desktopportraittop="503" data-desktopportraitwidth="auto"
+                                            data-desktopportraitheight="auto" data-desktopportraitalign="center" data-desktopportraitvalign="top"
+                                            data-desktopportraitparentalign="center" data-desktopportraitparentvalign="middle"
+                                            data-desktopportraitfontsize="100" data-mobileportraitleft="0" data-mobileportraittop="-105"
+                                            data-mobileportraitalign="center" data-mobileportraitvalign="middle" data-mobileportraitfontsize="120">
+                                            <div class="n2-ss-layer-parallax">
+                                                <h2 id="n2-ss-1item2" class="n2-font-b15f510140c70c4a8eeef10a929ab09a-hover n2-style-4b6a5db5d38ac29df71dc25c50551876-heading   n2-ow"
+                                                    style="display:block;white-space:nowrap;">Когда есть, что вспомнить...</h2>
+                                            </div>
+                                        </div>
+                                        <div class="n2-ss-layer" style="z-index:3;overflow:visible;text-align:center;left:41px;top:76px;width:auto;height:auto;"
+                                            data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6Ilx1MDQxN1x1MDQzMFx1MDQ0Mlx1MDQzNVx1MDQzY1x1MDQzZFx1MDQzNVx1MDQzZFx1MDQzOFx1MDQzNSIsImR1cmF0aW9uIjo2LCJkZWxheSI6MTIsIm9wYWNpdHkiOjB9XX0="
+                                            data-class="" data-rotation="0" data-parallax="1" data-adaptivefont="1" data-generatorvisible=""
+                                            data-desktopportrait="0" data-desktoplandscape="1" data-tabletportrait="0" data-tabletlandscape="1"
+                                            data-mobileportrait="1" data-mobilelandscape="1" data-responsiveposition="1" data-responsivesize="1"
+                                            data-desktopportraitleft="41" data-desktopportraittop="76" data-desktopportraitwidth="auto"
+                                            data-desktopportraitheight="auto" data-desktopportraitalign="center" data-desktopportraitvalign="middle"
+                                            data-desktopportraitparentalign="center" data-desktopportraitparentvalign="middle"
+                                            data-desktopportraitfontsize="100" data-mobileportraitleft="0" data-mobileportraittop="-256"
+                                            data-mobileportraitalign="center" data-mobileportraitvalign="middle">
+                                            <div class="n2-ss-layer-parallax">
+                                                <div id="n2-ss-1item3" class="  n2-ow" style="display:block;">
+                                                    <a class="n2-font-e61aea8ea512590cd04ad6f8bd2b4f90-hover  n2-ow" style="display:block;" href="#about">Команда Rec-Studio</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="n2-ss-layer" style="z-index:4;overflow:visible;text-align:center;left:41px;top:503px;width:auto;height:auto;"
+                                            data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6Ilx1MDQxN1x1MDQzMFx1MDQ0Mlx1MDQzNVx1MDQzY1x1MDQzZFx1MDQzNVx1MDQzZFx1MDQzOFx1MDQzNSIsImR1cmF0aW9uIjo2LCJkZWxheSI6Niwib3BhY2l0eSI6MH1dLCJvdXQiOlt7Im5hbWUiOiJcdTA0MTdcdTA0MzBcdTA0NDJcdTA0MzVcdTA0M2NcdTA0M2RcdTA0MzVcdTA0M2RcdTA0MzhcdTA0MzUiLCJkdXJhdGlvbiI6MSwib3BhY2l0eSI6MH1dfQ=="
+                                            data-class="" data-rotation="0" data-parallax="1" data-adaptivefont="1" data-generatorvisible=""
+                                            data-desktopportrait="0" data-desktoplandscape="1" data-tabletportrait="0" data-tabletlandscape="1"
+                                            data-mobileportrait="1" data-mobilelandscape="1" data-responsiveposition="1" data-responsivesize="1"
+                                            data-desktopportraitleft="41" data-desktopportraittop="503" data-desktopportraitwidth="auto"
+                                            data-desktopportraitheight="auto" data-desktopportraitalign="center" data-desktopportraitvalign="top"
+                                            data-desktopportraitparentalign="center" data-desktopportraitparentvalign="middle"
+                                            data-desktopportraitfontsize="100" data-mobileportraitleft="0" data-mobileportraittop="-75"
+                                            data-mobileportraitalign="center" data-mobileportraitvalign="middle" data-mobileportraitfontsize="120">
+                                            <div class="n2-ss-layer-parallax">
+                                                <h2 id="n2-ss-1item4" class="n2-font-b15f510140c70c4a8eeef10a929ab09a-hover n2-style-4b6a5db5d38ac29df71dc25c50551876-heading   n2-ow"
+                                                    style="display:block;white-space:nowrap;">Там, где живут счастливые моменты</h2>
+                                            </div>
+                                        </div>
+                                        <div class="n2-ss-layer" style="z-index:5;overflow:visible;text-align:center;left:43px;top:76px;width:auto;height:auto;"
+                                            data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6Ilx1MDQxN1x1MDQzMFx1MDQ0Mlx1MDQzNVx1MDQzY1x1MDQzZFx1MDQzNVx1MDQzZFx1MDQzOFx1MDQzNSIsImR1cmF0aW9uIjo2LCJkZWxheSI6Niwib3BhY2l0eSI6MH1dLCJvdXQiOlt7Im5hbWUiOiJcdTA0MTdcdTA0MzBcdTA0NDJcdTA0MzVcdTA0M2NcdTA0M2RcdTA0MzVcdTA0M2RcdTA0MzhcdTA0MzUiLCJkdXJhdGlvbiI6MSwib3BhY2l0eSI6MH1dfQ=="
+                                            data-class="" data-rotation="0" data-parallax="1" data-adaptivefont="1" data-generatorvisible=""
+                                            data-desktopportrait="0" data-desktoplandscape="1" data-tabletportrait="0" data-tabletlandscape="1"
+                                            data-mobileportrait="1" data-mobilelandscape="1" data-responsiveposition="1" data-responsivesize="1"
+                                            data-desktopportraitleft="43" data-desktopportraittop="76" data-desktopportraitwidth="auto"
+                                            data-desktopportraitheight="auto" data-desktopportraitalign="center" data-desktopportraitvalign="middle"
+                                            data-desktopportraitparentalign="center" data-desktopportraitparentvalign="middle"
+                                            data-desktopportraitfontsize="100" data-mobileportraitleft="0" data-mobileportraittop="-170"
+                                            data-mobileportraitalign="center" data-mobileportraitvalign="middle">
+                                            <div class="n2-ss-layer-parallax">
+                                                <div id="n2-ss-1item5" class="  n2-ow" style="display:block;">
+                                                    <a class="n2-font-e61aea8ea512590cd04ad6f8bd2b4f90-hover  n2-ow" style="display:block;" href="#about">ПРИНОСИМ РАДОСТЬ</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="n2-ss-layer" style="z-index:6;overflow:visible;text-align:center;left:40px;top:134px;width:auto;height:auto;"
+                                            data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6Ilx1MDQxN1x1MDQzMFx1MDQ0Mlx1MDQzNVx1MDQzY1x1MDQzZFx1MDQzNVx1MDQzZFx1MDQzOFx1MDQzNSIsImR1cmF0aW9uIjo1LCJkZWxheSI6MSwib3BhY2l0eSI6MH1dLCJvdXQiOlt7Im5hbWUiOiJcdTA0MTdcdTA0MzBcdTA0NDJcdTA0MzVcdTA0M2NcdTA0M2RcdTA0MzVcdTA0M2RcdTA0MzhcdTA0MzUiLCJkdXJhdGlvbiI6MSwib3BhY2l0eSI6MH1dfQ=="
+                                            data-class="" data-rotation="0" data-parallax="1" data-adaptivefont="1" data-generatorvisible=""
+                                            data-desktopportrait="0" data-desktoplandscape="1" data-tabletportrait="0" data-tabletlandscape="1"
+                                            data-mobileportrait="1" data-mobilelandscape="1" data-responsiveposition="1" data-responsivesize="1"
+                                            data-desktopportraitleft="40" data-desktopportraittop="134" data-desktopportraitwidth="auto"
+                                            data-desktopportraitheight="auto" data-desktopportraitalign="center" data-desktopportraitvalign="middle"
+                                            data-desktopportraitparentalign="center" data-desktopportraitparentvalign="middle"
+                                            data-desktopportraitfontsize="100" data-mobileportraitleft="0" data-mobileportraittop="-81"
+                                            data-mobileportraitalign="center" data-mobileportraitvalign="middle" data-mobileportraitfontsize="120">
+                                            <div class="n2-ss-layer-parallax">
+                                                <h2 id="n2-ss-1item6" class="n2-font-b15f510140c70c4a8eeef10a929ab09a-hover n2-style-4b6a5db5d38ac29df71dc25c50551876-heading   n2-ow"
+                                                    style="display:block;white-space:nowrap;">Есть моменты, которые стоят того,
+                                                    <br />чтобы их запечатлеть...</h2>
+                                            </div>
+                                        </div>
+                                        <div class="n2-ss-layer" style="z-index:7;overflow:visible;text-align:center;left:41px;top:76px;width:auto;height:auto;"
+                                            data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6Ilx1MDQxN1x1MDQzMFx1MDQ0Mlx1MDQzNVx1MDQzY1x1MDQzZFx1MDQzNVx1MDQzZFx1MDQzOFx1MDQzNSIsImR1cmF0aW9uIjo2LCJvcGFjaXR5IjowfV0sIm91dCI6W3sibmFtZSI6Ilx1MDQxN1x1MDQzMFx1MDQ0Mlx1MDQzNVx1MDQzY1x1MDQzZFx1MDQzNVx1MDQzZFx1MDQzOFx1MDQzNSIsImR1cmF0aW9uIjoxLCJvcGFjaXR5IjowfV19"
+                                            data-class="" data-rotation="0" data-parallax="1" data-adaptivefont="1" data-generatorvisible=""
+                                            data-desktopportrait="0" data-desktoplandscape="1" data-tabletportrait="0" data-tabletlandscape="1"
+                                            data-mobileportrait="1" data-mobilelandscape="1" data-responsiveposition="1" data-responsivesize="1"
+                                            data-desktopportraitleft="41" data-desktopportraittop="76" data-desktopportraitwidth="auto"
+                                            data-desktopportraitheight="auto" data-desktopportraitalign="center" data-desktopportraitvalign="middle"
+                                            data-desktopportraitparentalign="center" data-desktopportraitparentvalign="middle"
+                                            data-desktopportraitfontsize="100" data-mobileportraitleft="1" data-mobileportraittop="-259"
+                                            data-mobileportraitalign="center" data-mobileportraitvalign="middle">
+                                            <div class="n2-ss-layer-parallax">
+                                                <div id="n2-ss-1item7" class="  n2-ow" style="display:block;">
+                                                    <a class="n2-font-d1dab47e45675c0a494af29880bdf2a4-hover  n2-ow" style="display:block;" href="#about">Команда Rec-Studio</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="n2-ss-layer" style="z-index:8;overflow:visible;text-align:center;left:0px;top:185px;width:auto;height:auto;"
+                                            data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6Ilx1MDQxN1x1MDQzMFx1MDQ0Mlx1MDQzNVx1MDQzY1x1MDQzZFx1MDQzNVx1MDQzZFx1MDQzOFx1MDQzNSIsImR1cmF0aW9uIjozLCJkZWxheSI6Mywib3BhY2l0eSI6MH1dfQ=="
+                                            data-class="" data-rotation="0" data-parallax="1" data-adaptivefont="1" data-generatorvisible=""
+                                            data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1"
+                                            data-mobileportrait="0" data-mobilelandscape="1" data-responsiveposition="1" data-responsivesize="1"
+                                            data-desktopportraitleft="0" data-desktopportraittop="185" data-desktopportraitwidth="auto"
+                                            data-desktopportraitheight="auto" data-desktopportraitalign="center" data-desktopportraitvalign="middle"
+                                            data-desktopportraitparentalign="center" data-desktopportraitparentvalign="middle"
+                                            data-desktopportraitfontsize="100">
+                                            <div class="n2-ss-layer-parallax">
+                                                <div class="nextend-smartslider-button-container n2-font-4c91e164df142805cadf12bf0b816a0b-link " style="cursor: pointer; display:inline-block;white-space:nowrap;">
+                                                    <a style="display:inline-block;" class="n2-style-b47084d152ece8573b38c5659c33cc6f-heading  " href="#about">О НАС</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="n2-ss-layer" style="z-index:9;overflow:visible;text-align:center;left:0px;top:100px;width:auto;height:auto;"
+                                            data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6Ilx1MDQxN1x1MDQzMFx1MDQ0Mlx1MDQzNVx1MDQzY1x1MDQzZFx1MDQzNVx1MDQzZFx1MDQzOFx1MDQzNSIsImR1cmF0aW9uIjo2LCJkZWxheSI6MTMsIm9wYWNpdHkiOjB9XX0="
+                                            data-class="" data-rotation="0" data-parallax="1" data-adaptivefont="1" data-generatorvisible=""
+                                            data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1"
+                                            data-mobileportrait="0" data-mobilelandscape="1" data-responsiveposition="1" data-responsivesize="1"
+                                            data-desktopportraitleft="0" data-desktopportraittop="100" data-desktopportraitwidth="auto"
+                                            data-desktopportraitheight="auto" data-desktopportraitalign="center" data-desktopportraitvalign="middle"
+                                            data-desktopportraitparentalign="center" data-desktopportraitparentvalign="middle"
+                                            data-desktopportraitfontsize="100" data-mobileportraitleft="0" data-mobileportraittop="291"
+                                            data-mobileportraitalign="center" data-mobileportraitvalign="top" data-mobileportraitfontsize="120">
+                                            <div class="n2-ss-layer-parallax">
+                                                <h2 id="n2-ss-1item9" class="n2-font-fa62485338999a4652ed462b1771fc7f-hover n2-style-4b6a5db5d38ac29df71dc25c50551876-heading   n2-ow"
+                                                    style="display:block;white-space:nowrap;">Когда есть, что вспомнить...</h2>
+                                            </div>
+                                        </div>
+                                        <div class="n2-ss-layer" style="z-index:10;overflow:visible;text-align:center;left:0px;top:36px;width:auto;height:auto;"
+                                            data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6Ilx1MDQxN1x1MDQzMFx1MDQ0Mlx1MDQzNVx1MDQzY1x1MDQzZFx1MDQzNVx1MDQzZFx1MDQzOFx1MDQzNSIsImR1cmF0aW9uIjo2LCJkZWxheSI6MTMsIm9wYWNpdHkiOjB9XX0="
+                                            data-class="" data-rotation="0" data-parallax="1" data-adaptivefont="1" data-generatorvisible=""
+                                            data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1"
+                                            data-mobileportrait="0" data-mobilelandscape="1" data-responsiveposition="1" data-responsivesize="1"
+                                            data-desktopportraitleft="0" data-desktopportraittop="36" data-desktopportraitwidth="auto"
+                                            data-desktopportraitheight="auto" data-desktopportraitalign="center" data-desktopportraitvalign="middle"
+                                            data-desktopportraitparentalign="center" data-desktopportraitparentvalign="middle"
+                                            data-desktopportraitfontsize="100">
+                                            <div class="n2-ss-layer-parallax">
+                                                <div id="n2-ss-1item10" class="  n2-ow" style="display:block;">
+                                                    <a class="n2-font-e32d686cbb7e97346921b701d852bdaf-hover  n2-ow" style="display:block;" href="#about">Команда Rec-Studio</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="n2-ss-layer" style="z-index:11;overflow:visible;text-align:center;left:0px;top:100px;width:auto;height:auto;"
+                                            data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6Ilx1MDQxN1x1MDQzMFx1MDQ0Mlx1MDQzNVx1MDQzY1x1MDQzZFx1MDQzNVx1MDQzZFx1MDQzOFx1MDQzNSIsImR1cmF0aW9uIjo2LCJkZWxheSI6Nywib3BhY2l0eSI6MH1dLCJvdXQiOlt7Im5hbWUiOiJcdTA0MTdcdTA0MzBcdTA0NDJcdTA0MzVcdTA0M2NcdTA0M2RcdTA0MzVcdTA0M2RcdTA0MzhcdTA0MzUiLCJkdXJhdGlvbiI6MSwib3BhY2l0eSI6MH1dfQ=="
+                                            data-class="" data-rotation="0" data-parallax="1" data-adaptivefont="1" data-generatorvisible=""
+                                            data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1"
+                                            data-mobileportrait="0" data-mobilelandscape="1" data-responsiveposition="1" data-responsivesize="1"
+                                            data-desktopportraitleft="0" data-desktopportraittop="100" data-desktopportraitwidth="auto"
+                                            data-desktopportraitheight="auto" data-desktopportraitalign="center" data-desktopportraitvalign="middle"
+                                            data-desktopportraitparentalign="center" data-desktopportraitparentvalign="middle"
+                                            data-desktopportraitfontsize="100" data-mobileportraitleft="33" data-mobileportraittop="2516"
+                                            data-mobileportraitalign="center" data-mobileportraitvalign="top" data-mobileportraitfontsize="120">
+                                            <div class="n2-ss-layer-parallax">
+                                                <h2 id="n2-ss-1item11" class="n2-font-fa62485338999a4652ed462b1771fc7f-hover n2-style-4b6a5db5d38ac29df71dc25c50551876-heading   n2-ow"
+                                                    style="display:block;white-space:nowrap;">Там, где живут счастливые моменты</h2>
+                                            </div>
+                                        </div>
+                                        <div class="n2-ss-layer" style="z-index:12;overflow:visible;text-align:center;left:0px;top:36px;width:auto;height:auto;"
+                                            data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6Ilx1MDQxN1x1MDQzMFx1MDQ0Mlx1MDQzNVx1MDQzY1x1MDQzZFx1MDQzNVx1MDQzZFx1MDQzOFx1MDQzNSIsImR1cmF0aW9uIjo2LCJkZWxheSI6Nywib3BhY2l0eSI6MH1dLCJvdXQiOlt7Im5hbWUiOiJcdTA0MTdcdTA0MzBcdTA0NDJcdTA0MzVcdTA0M2NcdTA0M2RcdTA0MzVcdTA0M2RcdTA0MzhcdTA0MzUiLCJkdXJhdGlvbiI6MSwib3BhY2l0eSI6MH1dfQ=="
+                                            data-class="" data-rotation="0" data-parallax="1" data-adaptivefont="1" data-generatorvisible=""
+                                            data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1"
+                                            data-mobileportrait="0" data-mobilelandscape="1" data-responsiveposition="1" data-responsivesize="1"
+                                            data-desktopportraitleft="0" data-desktopportraittop="36" data-desktopportraitwidth="auto"
+                                            data-desktopportraitheight="auto" data-desktopportraitalign="center" data-desktopportraitvalign="middle"
+                                            data-desktopportraitparentalign="center" data-desktopportraitparentvalign="middle"
+                                            data-desktopportraitfontsize="100">
+                                            <div class="n2-ss-layer-parallax">
+                                                <div id="n2-ss-1item12" class="  n2-ow" style="display:block;">
+                                                    <a class="n2-font-e32d686cbb7e97346921b701d852bdaf-hover  n2-ow" style="display:block;" href="#about">ПРИНОСИМ РАДОСТЬ</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="n2-ss-layer" style="z-index:13;overflow:visible;text-align:center;left:0px;top:100px;width:auto;height:auto;"
+                                            data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6Ilx1MDQxN1x1MDQzMFx1MDQ0Mlx1MDQzNVx1MDQzY1x1MDQzZFx1MDQzNVx1MDQzZFx1MDQzOFx1MDQzNSIsImR1cmF0aW9uIjo1LCJkZWxheSI6Miwib3BhY2l0eSI6MH1dLCJvdXQiOlt7Im5hbWUiOiJcdTA0MTdcdTA0MzBcdTA0NDJcdTA0MzVcdTA0M2NcdTA0M2RcdTA0MzVcdTA0M2RcdTA0MzhcdTA0MzUiLCJkdXJhdGlvbiI6MSwib3BhY2l0eSI6MH1dfQ=="
+                                            data-class="" data-rotation="0" data-parallax="1" data-adaptivefont="1" data-generatorvisible=""
+                                            data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1"
+                                            data-mobileportrait="0" data-mobilelandscape="1" data-responsiveposition="1" data-responsivesize="1"
+                                            data-desktopportraitleft="0" data-desktopportraittop="100" data-desktopportraitwidth="auto"
+                                            data-desktopportraitheight="auto" data-desktopportraitalign="center" data-desktopportraitvalign="middle"
+                                            data-desktopportraitparentalign="center" data-desktopportraitparentvalign="middle"
+                                            data-desktopportraitfontsize="100" data-mobileportraitleft="412" data-mobileportraittop="2516"
+                                            data-mobileportraitalign="center" data-mobileportraitvalign="top" data-mobileportraitfontsize="120">
+                                            <div class="n2-ss-layer-parallax">
+                                                <h2 id="n2-ss-1item13" class="n2-font-fa62485338999a4652ed462b1771fc7f-hover n2-style-4b6a5db5d38ac29df71dc25c50551876-heading   n2-ow"
+                                                    style="display:block;white-space:nowrap;">Есть моменты, которые стоят того, чтобы их запечатлеть...</h2>
+                                            </div>
+                                        </div>
+                                        <div class="n2-ss-layer" style="z-index:14;overflow:visible;text-align:center;left:0px;top:36px;width:auto;height:auto;"
+                                            data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6Ilx1MDQxN1x1MDQzMFx1MDQ0Mlx1MDQzNVx1MDQzY1x1MDQzZFx1MDQzNVx1MDQzZFx1MDQzOFx1MDQzNSIsImR1cmF0aW9uIjo2LCJkZWxheSI6MSwib3BhY2l0eSI6MH1dLCJvdXQiOlt7Im5hbWUiOiJcdTA0MTdcdTA0MzBcdTA0NDJcdTA0MzVcdTA0M2NcdTA0M2RcdTA0MzVcdTA0M2RcdTA0MzhcdTA0MzUiLCJkdXJhdGlvbiI6MSwib3BhY2l0eSI6MH1dfQ=="
+                                            data-class="" data-rotation="0" data-parallax="1" data-adaptivefont="1" data-generatorvisible=""
+                                            data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1"
+                                            data-mobileportrait="0" data-mobilelandscape="1" data-responsiveposition="1" data-responsivesize="1"
+                                            data-desktopportraitleft="0" data-desktopportraittop="36" data-desktopportraitwidth="auto"
+                                            data-desktopportraitheight="auto" data-desktopportraitalign="center" data-desktopportraitvalign="middle"
+                                            data-desktopportraitparentalign="center" data-desktopportraitparentvalign="middle"
+                                            data-desktopportraitfontsize="100">
+                                            <div class="n2-ss-layer-parallax">
+                                                <div id="n2-ss-1item14" class="  n2-ow" style="display:block;">
+                                                    <a class="n2-font-e32d686cbb7e97346921b701d852bdaf-hover  n2-ow" style="display:block;" href="#about">Команда Rec-Studio</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="n2-ss-layer" style="z-index:15;overflow:visible;text-align:center;left:0px;top:-72px;width:203px;height:145px;"
+                                            data-animations="eyJzcGVjaWFsWmVybyI6MCwidHJhbnNmb3JtT3JpZ2luIjoiNTB8Knw1MHwqfDAiLCJpbiI6W3sibmFtZSI6Ilx1MDQxN1x1MDQzMFx1MDQ0Mlx1MDQzNVx1MDQzY1x1MDQzZFx1MDQzNVx1MDQzZFx1MDQzOFx1MDQzNSIsImR1cmF0aW9uIjoyLCJvcGFjaXR5IjowfV19"
+                                            data-class="" data-rotation="0" data-parallax="1" data-adaptivefont="1" data-generatorvisible=""
+                                            data-desktopportrait="1" data-desktoplandscape="1" data-tabletportrait="1" data-tabletlandscape="1"
+                                            data-mobileportrait="0" data-mobilelandscape="1" data-responsiveposition="1" data-responsivesize="1"
+                                            data-desktopportraitleft="0" data-desktopportraittop="-72" data-desktopportraitwidth="203"
+                                            data-desktopportraitheight="145" data-desktopportraitalign="center" data-desktopportraitvalign="middle"
+                                            data-desktopportraitparentalign="center" data-desktopportraitparentvalign="middle"
+                                            data-desktopportraitfontsize="100">
+                                            <div class="n2-ss-layer-parallax">
+                                                <div class="" style="overflow:hidden;">
+                                                    <a class="n2-ow" href="/">
+                                                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-desktop="images/logo.png"
+                                                            data-tablet="images/1logo.png" data-mobile="images/2logo.png" data-device="1"
+                                                            id="n2-ss-1item15" alt="Изображение недоступно" style="display: inline-block; max-width: 100%; width: 100%;height: auto;"
+                                                            class=" n2-ow" title="" />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="n2-clear"></div>
+                <div id="n2-ss-1-spinner" style="display: none;">
+                    <div>
+                        <div class="n2-ss-spinner-simple-white-counter-container">
+                            <div class="n2-ss-spinner-simple-white-counter n2-ss-spinner-counter"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="n2-ss-1-placeholder" style="position: relative;z-index:2;">
+            <img style="width: 100%; max-width:3000px;" class="n2-ow" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMCIgd2lkdGg9IjE1MDAiIGhlaWdodD0iNzAwIiA+PC9zdmc+"
+                alt="Slider" />
+        </div>
+        Nextend Smart Slider 3 #1 - END -->
+    </div>
+    <main>
+        <section id="about">
+            <div class="container">
+                <div class="text-block">
+                    <h3 class="main-title">О нас</h3>
+                    <p>Мы снимаем качественное видео и фото, для того что бы наши клиенты были
+                        <br>довольны проделанной работой.
+                    </p>
+                    <a class="btn" href="#">Наша команда</a>
+                </div>
+            </div>
+        </section>
+        <section id="services">
+            <div class="column-1">
+                <div class="service-box box1">
+                    <img src="/images/1.png" alt="1">
+                    <h3>
+                        <a href="#">Видео</a>
+                    </h3>
+                    <p>Видеосъемка праздников – дело очень ответственное. Нашим видеоографам всегда удаётся запечатлеть самые
+                        яркие моменты дня, которые для Вас очень важны.</p>
+                </div>
+                <div class="service-box box2">
+                    <img src="/images/2.png" alt="2">
+                    <h3>
+                        <a href="#">Фото</a>
+                    </h3>
+                    <p>Наш фотограф очень любит свою работу и все, что связано с фотографией. Самое важное — это индивидуальный
+                        подход к каждой съемке и чтобы клиент всегда оставался доволен!</p>
+                </div>
+                <div class="service-box box3">
+                    <img src="/images/3.png" alt="3">
+                    <h3>
+                        <a href="#">Выезд</a>
+                    </h3>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam, inventore maxime perferendis in similique
+                        officia veritatis molestiae dolor eveniet velit pariatur.</p>
+                </div>
+                <div class="service-box box4">
+                    <img src="/images/4.png" alt="4">
+                    <h3>
+                        <a href="#">Хорошее настроение</a>
+                    </h3>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam, inventore maxime perferendis in similique
+                        officia veritatis molestiae dolor eveniet velit pariatur.</p>
+                </div>
+            </div>
+            <div class="column-2">
+                <div class="service-box">
+                    <h3 class="main-title">Наши услуги</h3>
+                    <p>Мы предлагаем вашему вниманию широкий спектр качественных услуг: Фото, видео съёмка, свадебный кортеж,
+                        фотокнига. Наша главная цель - это довольные клиенты. Команда Rec Studio вот уже много лет успешно
+                        развивается в своей сфере, в чем вы можете убедиться сами, посмотрев примеры наших работ и прочитав
+                        отзывы.
+                    </p>
+
+                </div>
+                <a class="btn-left-arrow" href="#">Отзывы клиентов</a>
+            </div>
+
+        </section>
+        <section id="to-action">
+            <div class="container">
+                <div class="column-1">
+                    <h4>Мы ждем ваших звонков</h4>
+                    <p>Если у вас возникли вопросы, желание пообщаться, или вы хотите написать свой отзыв о нашей работе, звоните,
+                        пишите.
+                    </p>
+                </div>
+                <div class="column-2">
+                    <a class="btn btn-to-action" href="#">Связаться</a>
+                </div>
+            </div>
+        </section>
+        <section id="video">
+            <h3 class="main-title">Наши видео работы</h3>
+            <p>Предлагаем Вашему вниманию примеры наших работ, свадебные
+                <br> клипы, Love Story и комерческие видео.</p>
+        </section>
+        <section id="photo">
+            <h3 class="main-title">Наши фото работы</h3>
+            <p>Предлагаем Вашему вниманию фото</p>
+        </section>
+        <section id="team">
+            <div class="container">
+                <h3 class="main-title">Наша команда</h3>
+                <p>
+                    <p>Наша творческая команда - это профессионалы своего дела.
+                        <br>Мы вкладываем душу в свою работу и понимаем всю ее ответственность.
+                        <br>Будьте уверены, выбор команды Rec Studio – залог того, что воспоминания о прекрасных мгновениях,
+                        моментах останутся с вами на всю жизнь!</p>
+                </p>
+                <div class="vert-divider"></div>
+                <div class="team-block">
+                    <div class="team-box">
+                        <div class="box">
+                            <img src="images/team/3.jpg" alt="">
+                            <span class="info">
+                                <h4>Олег Сухенко</h4>
+                                <p>видеограф</p>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="team-box">
+                        <div class="box">
+                            <div class="team-box"></div>
+                            <img src="images/team/1.jpg" alt="">
+                            <span class="info">
+                                <h4>Владимир Албу</h4>
+                                <p>фотограф</p>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="team-box">
+                        <div class="box">
+                            <img src="images/team/2.jpg" alt="">
+                            <span class="info">
+                                <h4>Вячеслав Постолаки</h4>
+                                <p>видеоопрератор</p>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="team-box">
+                        <div class="box">
+                            <img src="images/team/4.jpg" alt="">
+                            <span class="info">
+                                <h4>Юрий Забальский
+                                </h4>
+                                <p>монтажер</p>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="vert-divider"></div>
+            </div>
+        </section>
+        <section id="reviews">
+            <div class="column-1">
+                <img src="/images/qut.jpg" alt="qut">
+                <div class="wrap-slide">
+                    <div class="costumer-slide">
+                        <div class="item">
+                            <div class="name-costumer">
+                                <span>Diana</span>
+                                <img src="public/img/stars.png" alt="">
+                            </div>
+                            <span class="data-costumer">Jan 25th 2016</span>
+                            <p class="">Contacted Mini Auto Auction, told them about my budget situation, and asked for some car suggestions.
+                                In just a few minutes they sent me on my email some great offers. Thanks you. Contacted Mini
+                                Auto Auction, told them about my budget situation, and asked for some car suggestions.</p>
+                        </div>
+                        <div class="item">
+                            <div class="name-costumer">
+                                <span>Diana</span>
+                                <img src="public/img/stars.png" alt="">
+                            </div>
+                            <span class="data-costumer">Jan 25th 2016</span>
+                            <p class="">Contacted Mini Auto Auction, told them about my budget situation, and asked for some car suggestions.
+                                In just a few minutes they sent me on my email some great offers. Thanks you. Contacted Mini
+                                Auto Auction, told them about my budget situation, and asked for some car suggestions.</p>
+                        </div>
+                        <div class="item">
+                            <div class="name-costumer">
+                                <span>Diana</span>
+                                <img src="public/img/stars.png" alt="">
+                            </div>
+                            <span class="data-costumer">Jan 25th 2016</span>
+                            <p class="">Contacted Mini Auto Auction, told them about my budget situation, and asked for some car suggestions.
+                                In just a few minutes they sent me on my email some great offers. Thanks you. Contacted Mini
+                                Auto Auction, told them about my budget situation, and asked for some car suggestions.</p>
+                        </div>
+                    </div>
+                    <!-- <div class="custom-controls">
+                        <button class="prev">
+                            <img src="public/img/arrow.png" alt="">
+                            <img class="active" src="public/img/arrow-active.png" alt="">
+                        </button>
+                        <button class="next">
+                            <img src="public/img/arrow.png" alt="">
+                            <img class="active" src="public/img/arrow-active.png" alt="">
+                        </button>
+                    </div> -->
+                </div>
+            </div>
+            <div class="column-2">
+                <div class="text-block">
+                    <h3 class="main-title">Отзывы</h3>
+                    <p>
+                        Поделитесь с нами Ваши впечатлениями... Мы не равнодушны к
+                        <br> мнению клиентов о наших работах.
+                    </p>
+                    <a href="#">Написать отзыв</a>
+                </div>
+            </div>
+        </section>
+        <section id="partners">
+            <ul class="container">
+                <li>
+                    <a href="http://beriozca.md/" target="_blank">
+                        <img src="/images/partners/1.png" alt="">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://ok.ru/profile/574655033533/album/836925939389" target="_blank">
+                        <img src="/images/partners/2.png" alt="">
+                    </a>
+                </li>
+            </ul>
+            <a class="btn-link" href="#">Стать партнером</a>
+        </section>
+    </main>
+    <fotter id="fotter">
+        <div class="container">
+            <div class="column-1">
+                <h4>Rec-Studio</h4>
+                <p>Профессиональная фото и видеосъемка.
+                    <br>Снимаем с любовью</p>
+            </div>
+            <div class="column-2">
+                <h4>Наш контактный телефон:
+                    <span>+373(791)67122</span>
+                </h4>
+            </div>
+        </div>
+        <div class="container copyright">
+            <div class="column-1">Counter</div>
+            <div class="column-2">
+                <ul class="fotter-menu">
+                    <li>
+                        <a href="">Главная</a>
+                    </li>
+                    <li>
+                        <a href="">О нас</a>
+                    </li>
+                    <li>
+                        <a href="">Контакты</a>
+                    </li>
+                    <li>
+                        <a href="">Фото</a>
+                    </li>
+                    <li>
+                        <a href="">Видео</a>
+                    </li>
+                    <li>
+                        <a href="">Отзывы</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </fotter>
+
+    <script src="js/tiny-slider.js"></script>
+    <script src="js/tiny-slider.helper.ie8.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

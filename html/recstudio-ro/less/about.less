@@ -1,0 +1,52 @@
+#about {
+    background: url("/images/about-bg.jpg") no-repeat top center;
+    min-height: 903px;
+    .container {
+        display: flex;
+        align-items: flex-end;
+        min-height: 505px;
+        justify-content: right;
+        position: relative;
+        .text-block {
+            position: absolute;
+            right: 0;
+            top: auto;
+            left: auto;
+            bottom: 0;
+            width: 40%;
+            .main-title {
+                font-size: 55px;
+                line-height: 1em;
+                font-weight: 700;
+                color: #414141;
+                position: relative;
+            }
+        }
+        p {
+            line-height: 24px;
+        }
+        .btn {
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #333333;
+            font-size: 18px;
+            margin-top: 25px;
+            margin-left: 25px;
+            display: block;
+            position: relative;
+            &:before {
+                content: url(../images/arrow-btn.png);
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                position: absolute;
+                display: block;
+                top: 0px;
+                left: -28px;
+            }
+            &:hover {
+                color: #ff3a47;
+            }
+        }
+    }
+}

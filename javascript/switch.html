@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Switch</title>
+    <style>
+        .inp-wrap {
+            background: #eee;
+            padding: 5px;
+            max-width: 100%;
+            min-height: auto;
+        }
+
+        #result.green {
+            color: green;
+        }
+
+        #result.red {
+            color: red;
+        }
+
+        #result.orange {
+            color: orangered;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="inp-wrap">
+        <h3>Проверить наличие продуктов из масссива</h3>
+        <p id="pinfo">Продукты в наличии: </p>
+        <input id="inp" type="text" name="" id="">
+        <button id="btn">Проверить</button>
+        <button id="clear">Стереть</button>
+        <div id="result"></div>
+    </div>
+
+
+    <script>
+        var inp = document.getElementById('inp');
+        var massive = ['Banan', 'Orange', 'Lemon'];
+        var p = document.getElementById('pinfo');
+        var btn = document.getElementById('btn');
+        var clear = document.getElementById('clear');
+        var result = document.getElementById('result');
+
+
+p.innerHTML = 'Продукты в наличии: ' + massive.join(', ') +'.';
+
+        btn.addEventListener('click', function () {
+            switch (inp.value) {
+                case massive[0]:
+                    result.innerHTML = massive[0] + ": Такой фрукт есть в наличии.";
+                    result.removeAttribute('class');
+                    result.classList.add('green');
+                    break;
+                case massive[1]:
+                    result.innerHTML = massive[1] + ': Такой фрукт есть в наличии.';
+                    result.removeAttribute('class');
+                    result.classList.add('green');
+                    break;
+                case massive[2]:
+                    result.innerHTML = massive[2] + ': Такой фрукт есть в наличии.';
+                    result.removeAttribute('class');
+                    result.classList.add('green');
+                    break;
+                default:
+                    result.innerHTML = 'Неизвестный фрукт...';
+                    result.classList.add('red');
+            }
+        });
+
+
+
+
+        clear.addEventListener('click', function () {
+            inp.value = "";
+            result.innerHTML = "";
+            result.removeAttribute('class');
+        });
+
+        if (inp.value == 0) {
+            result.innerHTML = "Введите что-то."
+            result.classList.add('orange');
+        };
+    </script>
+</body>
+
+</html>
