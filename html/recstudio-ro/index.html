@@ -8,6 +8,8 @@
     <title>RecstudioRO</title>
     <link rel="stylesheet" type="text/css" href="css/normalize.min.css" media="screen, print" />
     <link rel="stylesheet" type="text/css" href="css/n2-ss-1.css" media="screen, print" />
+    <link rel="stylesheet" type="text/css" href="css/tiny-slider.css" media="screen, print" />
+    <link rel="stylesheet" type="text/css" href="css/swipebox.css" media="screen, print" />
     <link rel="stylesheet" type="text/css" href="css/main.css" media="screen, print" />
 
     <script type="text/javascript">
@@ -297,38 +299,53 @@
 </head>
 
 <body>
-    <div id="menu-wrapper">
+    <div class="menu-wrapper">
         <div class="container">
-            <ul id="menu">
-                <li class="main">
-                    <a href="#">Главная</a>
-                </li>
-                <li class="about">
-                    <a href="#">О нас</a>
-                </li>
-                <li>
-                    <a href="#">Контакты</a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img class="logo-center" src="/images/gd.png" alt="gd">
-                    </a>
-                </li>
-                <li class="photo">
-                    <a href="#">Фото</a>
-                </li>
-                <li class="video">
-                    <a href="#">Видео</a>
-                </li>
-                <li>
-                    <a href="#">Отзывы</a>
-                </li>
-            </ul>
+            <div class="logotype">
+                <a href="#">
+                    <img class="logo" src="images/recstudio-logo.png" alt="">
+                </a>
+            </div>
+            <button id="menu-btn">
+                <span class="op"></span>
+                <span class="op"></span>
+                <span class="op"></span>
+                <span class="cl-1"></span>
+                <span class="cl-2"></span>
+            </button>
+            <nav class="dropdown">
+                <ul id="menu">
+                    <li>
+                        <a href="#">Acasă</a>
+                    </li>
+                    <li>
+                        <a href="#">Despre noi</a>
+                    </li>
+                    <li class="no-line">
+                        <a href="#">Contacte</a>
+                    </li>
+                    <li class="no-line">
+                        <a href="#">
+                            <img class="logo" src="images/recstudio-logo.png" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#register">Fotografie</a>
+                    </li>
+                    <li>
+                        <a href="#register">Video</a>
+                    </li>
+                    <li class="no-line">
+                        <a href="#register">Recenzii</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
+    </div>
     </div>
     <div>
 
-        <!-- Nextend Smart Slider 3 #1 - BEGIN
+        <!-- Nextend Smart Slider 3 #1 - BEGIN 
         <div id="n2-ss-1-align" class="n2-ss-align">
             <div class="n2-padding">
                 <div id="n2-ss-1" class="n2-ss-slider n2notransition n2-ss-load-fade " data-minFontSizedesktopPortrait="1" data-minFontSizedesktopLandscape="1"
@@ -343,7 +360,7 @@
                                         class="n2-ss-slide-background" data-opacity="1">
                                         <div class="n2-ss-slide-background-image n2-ss-slide-tile" style="background-image: url(images/fn.jpeg);opacity:1;background-position: 50% 50%;"></div>
                                     </div>
-                                    <video muted="muted" loop="loop" preload="metadata" class="n2-ss-slide-background-video" data-mode="fill" data-background="background-color: #000000;background-color: RGBA(0,0,0,0.75);opacity:1;"
+                                    <video muted="muted" loop="loop" preload="metadata" class="n2-ss-slide-background-video" data-mode="fill" data-background="background-color: #000000;background-color: RGBA(0,0,0,0.75);background-image: url(/images/slideshow/video/pattern_260.png);opacity:1;"
                                         playsinline="playsinline" webkit-playsinline="webkit-playsinline">
                                         <source src="/images/slideshow/video/slsider.mp4" type="video/mp4">
                                     </video>
@@ -360,7 +377,7 @@
                                             data-mobileportraitalign="center" data-mobileportraitvalign="middle">
                                             <div class="n2-ss-layer-parallax">
                                                 <div class="nextend-smartslider-button-container n2-font-6a7f3bfd608618ece17619763f05c9f5-link " style="cursor: pointer; display:inline-block;white-space:nowrap;">
-                                                    <a style="display:inline-block;" class="n2-style-b4bc3edf877e3e631cd998023357cfc5-heading  " href="#about">О НАС</a>
+                                                    <a style="display:inline-block;" class="n2-style-b4bc3edf877e3e631cd998023357cfc5-heading  " href="#about">DESPRE NOI</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -376,7 +393,7 @@
                                             data-mobileportraitalign="center" data-mobileportraitvalign="middle" data-mobileportraitfontsize="120">
                                             <div class="n2-ss-layer-parallax">
                                                 <h2 id="n2-ss-1item2" class="n2-font-b15f510140c70c4a8eeef10a929ab09a-hover n2-style-4b6a5db5d38ac29df71dc25c50551876-heading   n2-ow"
-                                                    style="display:block;white-space:nowrap;">Когда есть, что вспомнить...</h2>
+ style="display:block;white-space:nowrap;">Când este ceva de reținut ...</h2>
                                             </div>
                                         </div>
                                         <div class="n2-ss-layer" style="z-index:3;overflow:visible;text-align:center;left:41px;top:76px;width:auto;height:auto;"
@@ -391,7 +408,7 @@
                                             data-mobileportraitalign="center" data-mobileportraitvalign="middle">
                                             <div class="n2-ss-layer-parallax">
                                                 <div id="n2-ss-1item3" class="  n2-ow" style="display:block;">
-                                                    <a class="n2-font-e61aea8ea512590cd04ad6f8bd2b4f90-hover  n2-ow" style="display:block;" href="#about">Команда Rec-Studio</a>
+                                                    <a class="n2-font-e61aea8ea512590cd04ad6f8bd2b4f90-hover  n2-ow" style="display:block;" href="#about">Echipa Rec-Studio</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -407,7 +424,7 @@
                                             data-mobileportraitalign="center" data-mobileportraitvalign="middle" data-mobileportraitfontsize="120">
                                             <div class="n2-ss-layer-parallax">
                                                 <h2 id="n2-ss-1item4" class="n2-font-b15f510140c70c4a8eeef10a929ab09a-hover n2-style-4b6a5db5d38ac29df71dc25c50551876-heading   n2-ow"
-                                                    style="display:block;white-space:nowrap;">Там, где живут счастливые моменты</h2>
+ style="display:block;white-space:nowrap;">Unde trăiesc momente fericite</h2>
                                             </div>
                                         </div>
                                         <div class="n2-ss-layer" style="z-index:5;overflow:visible;text-align:center;left:43px;top:76px;width:auto;height:auto;"
@@ -422,7 +439,7 @@
                                             data-mobileportraitalign="center" data-mobileportraitvalign="middle">
                                             <div class="n2-ss-layer-parallax">
                                                 <div id="n2-ss-1item5" class="  n2-ow" style="display:block;">
-                                                    <a class="n2-font-e61aea8ea512590cd04ad6f8bd2b4f90-hover  n2-ow" style="display:block;" href="#about">ПРИНОСИМ РАДОСТЬ</a>
+<a class="n2-font-e61aea8ea512590cd04ad6f8bd2b4f90-hover  n2-ow" style="display:block;" href="#about">NE BUCURĂM</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -438,8 +455,7 @@
                                             data-mobileportraitalign="center" data-mobileportraitvalign="middle" data-mobileportraitfontsize="120">
                                             <div class="n2-ss-layer-parallax">
                                                 <h2 id="n2-ss-1item6" class="n2-font-b15f510140c70c4a8eeef10a929ab09a-hover n2-style-4b6a5db5d38ac29df71dc25c50551876-heading   n2-ow"
-                                                    style="display:block;white-space:nowrap;">Есть моменты, которые стоят того,
-                                                    <br />чтобы их запечатлеть...</h2>
+ style="display:block;white-space:nowrap;">Există momente care merită să fie capturate ...</h2>
                                             </div>
                                         </div>
                                         <div class="n2-ss-layer" style="z-index:7;overflow:visible;text-align:center;left:41px;top:76px;width:auto;height:auto;"
@@ -454,7 +470,7 @@
                                             data-mobileportraitalign="center" data-mobileportraitvalign="middle">
                                             <div class="n2-ss-layer-parallax">
                                                 <div id="n2-ss-1item7" class="  n2-ow" style="display:block;">
-                                                    <a class="n2-font-d1dab47e45675c0a494af29880bdf2a4-hover  n2-ow" style="display:block;" href="#about">Команда Rec-Studio</a>
+                                                    <a class="n2-font-d1dab47e45675c0a494af29880bdf2a4-hover  n2-ow" style="display:block;" href="#about">Echipa Rec-Studio</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -469,7 +485,7 @@
                                             data-desktopportraitfontsize="100">
                                             <div class="n2-ss-layer-parallax">
                                                 <div class="nextend-smartslider-button-container n2-font-4c91e164df142805cadf12bf0b816a0b-link " style="cursor: pointer; display:inline-block;white-space:nowrap;">
-                                                    <a style="display:inline-block;" class="n2-style-b47084d152ece8573b38c5659c33cc6f-heading  " href="#about">О НАС</a>
+                                                    <a style="display:inline-block;" class="n2-style-b47084d152ece8573b38c5659c33cc6f-heading  " href="#about">DESPRE NOI</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -485,7 +501,7 @@
                                             data-mobileportraitalign="center" data-mobileportraitvalign="top" data-mobileportraitfontsize="120">
                                             <div class="n2-ss-layer-parallax">
                                                 <h2 id="n2-ss-1item9" class="n2-font-fa62485338999a4652ed462b1771fc7f-hover n2-style-4b6a5db5d38ac29df71dc25c50551876-heading   n2-ow"
-                                                    style="display:block;white-space:nowrap;">Когда есть, что вспомнить...</h2>
+                                                    style="display:block;white-space:nowrap;">Când este ceva de reținut ...</h2>
                                             </div>
                                         </div>
                                         <div class="n2-ss-layer" style="z-index:10;overflow:visible;text-align:center;left:0px;top:36px;width:auto;height:auto;"
@@ -499,7 +515,7 @@
                                             data-desktopportraitfontsize="100">
                                             <div class="n2-ss-layer-parallax">
                                                 <div id="n2-ss-1item10" class="  n2-ow" style="display:block;">
-                                                    <a class="n2-font-e32d686cbb7e97346921b701d852bdaf-hover  n2-ow" style="display:block;" href="#about">Команда Rec-Studio</a>
+                                                    <a class="n2-font-e32d686cbb7e97346921b701d852bdaf-hover  n2-ow" style="display:block;" href="#about">Echipa Rec-Studio</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -515,7 +531,7 @@
                                             data-mobileportraitalign="center" data-mobileportraitvalign="top" data-mobileportraitfontsize="120">
                                             <div class="n2-ss-layer-parallax">
                                                 <h2 id="n2-ss-1item11" class="n2-font-fa62485338999a4652ed462b1771fc7f-hover n2-style-4b6a5db5d38ac29df71dc25c50551876-heading   n2-ow"
-                                                    style="display:block;white-space:nowrap;">Там, где живут счастливые моменты</h2>
+                                                    style="display:block;white-space:nowrap;">Unde trăiesc momente fericite</h2>
                                             </div>
                                         </div>
                                         <div class="n2-ss-layer" style="z-index:12;overflow:visible;text-align:center;left:0px;top:36px;width:auto;height:auto;"
@@ -529,7 +545,7 @@
                                             data-desktopportraitfontsize="100">
                                             <div class="n2-ss-layer-parallax">
                                                 <div id="n2-ss-1item12" class="  n2-ow" style="display:block;">
-                                                    <a class="n2-font-e32d686cbb7e97346921b701d852bdaf-hover  n2-ow" style="display:block;" href="#about">ПРИНОСИМ РАДОСТЬ</a>
+                                                    <a class="n2-font-e32d686cbb7e97346921b701d852bdaf-hover  n2-ow" style="display:block;" href="#about">NE BUCURĂM</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -545,7 +561,7 @@
                                             data-mobileportraitalign="center" data-mobileportraitvalign="top" data-mobileportraitfontsize="120">
                                             <div class="n2-ss-layer-parallax">
                                                 <h2 id="n2-ss-1item13" class="n2-font-fa62485338999a4652ed462b1771fc7f-hover n2-style-4b6a5db5d38ac29df71dc25c50551876-heading   n2-ow"
-                                                    style="display:block;white-space:nowrap;">Есть моменты, которые стоят того, чтобы их запечатлеть...</h2>
+                                                    style="display:block;white-space:nowrap;">Există momente care merită să fie capturate ...</h2>
                                             </div>
                                         </div>
                                         <div class="n2-ss-layer" style="z-index:14;overflow:visible;text-align:center;left:0px;top:36px;width:auto;height:auto;"
@@ -559,7 +575,7 @@
                                             data-desktopportraitfontsize="100">
                                             <div class="n2-ss-layer-parallax">
                                                 <div id="n2-ss-1item14" class="  n2-ow" style="display:block;">
-                                                    <a class="n2-font-e32d686cbb7e97346921b701d852bdaf-hover  n2-ow" style="display:block;" href="#about">Команда Rec-Studio</a>
+                                                    <a class="n2-font-e32d686cbb7e97346921b701d852bdaf-hover  n2-ow" style="display:block;" href="#about">Echipa Rec-Studio</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -588,6 +604,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
                 <div class="n2-clear"></div>
                 <div id="n2-ss-1-spinner" style="display: none;">
@@ -613,7 +630,7 @@
                     <p>Мы снимаем качественное видео и фото, для того что бы наши клиенты были
                         <br>довольны проделанной работой.
                     </p>
-                    <a class="btn" href="#">Наша команда</a>
+                    <a class="btn" href="#">Echipa noastră</a>
                 </div>
             </div>
         </section>
@@ -680,23 +697,84 @@
             </div>
         </section>
         <section id="video">
-            <h3 class="main-title">Наши видео работы</h3>
-            <p>Предлагаем Вашему вниманию примеры наших работ, свадебные
-                <br> клипы, Love Story и комерческие видео.</p>
+            <div class="text-block">
+                <h3 class="main-title">Наши видео работы</h3>
+                <p>Предлагаем Вашему вниманию примеры наших работ, свадебные
+                    <br> клипы, Love Story и комерческие видео.</p>
+            </div>
+            <div class="slide-video">
+                <div class="item">
+                    <iframe src="https://player.vimeo.com/video/242845995" width="100%" height="150" frameborder="0" webkitallowfullscreen mozallowfullscreen
+                        allowfullscreen></iframe>
+                </div>
+                <div class="item">
+                    <iframe src="https://player.vimeo.com/video/241876073" width="100%" height="150" frameborder="0" webkitallowfullscreen mozallowfullscreen
+                        allowfullscreen></iframe>
+                </div>
+                <div class="item">
+                    <iframe src="https://player.vimeo.com/video/241522101" width="100%" height="150" frameborder="0" webkitallowfullscreen mozallowfullscreen
+                        allowfullscreen></iframe>
+                </div>
+                <div class="item">
+                    <iframe src="https://player.vimeo.com/video/239230318" width="100%" height="150" frameborder="0" webkitallowfullscreen mozallowfullscreen
+                        allowfullscreen></iframe>
+                </div>
+                <div class="item">
+                    <iframe src="https://player.vimeo.com/video/239230318" width="100%" height="150" frameborder="0" webkitallowfullscreen mozallowfullscreen
+                        allowfullscreen></iframe>
+                </div>
+                <div class="item">
+                    <iframe src="https://player.vimeo.com/video/239230318" width="100%" height="150" frameborder="0" webkitallowfullscreen mozallowfullscreen
+                        allowfullscreen></iframe>
+                </div>
+                <div class="item">
+                    <iframe src="https://player.vimeo.com/video/239230318" width="100%" height="150" frameborder="0" webkitallowfullscreen mozallowfullscreen
+                        allowfullscreen></iframe>
+                </div>
+
+            </div>
+            <div class="customs-controls">
+                <button class="prev">
+                    <img src="images/arrow-left.png" alt="">
+                    <img class="active" src="images/arrow-left-active.png" alt="">
+                </button>
+                <button class="next">
+                    <img src="images/arrow-right.png" alt="">
+                    <img class="active" src="images/arrow-right-active.png" alt="">
+                </button>
+            </div>
         </section>
         <section id="photo">
             <h3 class="main-title">Наши фото работы</h3>
             <p>Предлагаем Вашему вниманию фото</p>
+            <div class="gallery-wrap">
+                <a id="gallery1" href="#">
+                    <img src="/images/gallery/1/03.jpg" alt="00">
+                </a>
+                <a id="gallery2" href="#">
+                    <img src="/images/gallery/1/01.jpg" alt="00">
+                </a>
+                <a id="gallery3" href="#">
+                    <img src="/images/gallery/1/04.jpg" alt="00">
+                </a>
+                <a id="gallery4" href="#">
+                    <img src="/images/gallery/1/05.jpg" alt="00">
+                </a>
+                <a id="gallery5" href="#">
+                    <img src="/images/gallery/1/10.jpg" alt="00">
+                </a>
+            </div>
         </section>
         <section id="team">
             <div class="container">
-                <h3 class="main-title">Наша команда</h3>
-                <p>
-                    <p>Наша творческая команда - это профессионалы своего дела.
-                        <br>Мы вкладываем душу в свою работу и понимаем всю ее ответственность.
-                        <br>Будьте уверены, выбор команды Rec Studio – залог того, что воспоминания о прекрасных мгновениях,
-                        моментах останутся с вами на всю жизнь!</p>
-                </p>
+                <div class="text-block">
+                    <h3 class="main-title">Наша команда</h3>
+                    <p>
+                        <p>Наша творческая команда - это профессионалы своего дела. Мы вкладываем душу в свою работу и понимаем
+                            всю ее ответственность. Будьте уверены, выбор команды Rec Studio – залог того, что воспоминания
+                            о прекрасных мгновениях, моментах останутся с вами на всю жизнь!</p>
+                    </p>
+                </div>
                 <div class="vert-divider"></div>
                 <div class="team-block">
                     <div class="team-box">
@@ -725,7 +803,7 @@
                             <img src="images/team/2.jpg" alt="">
                             <span class="info">
                                 <h4>Вячеслав Постолаки</h4>
-                                <p>видеоопрератор</p>
+                                <p>видеоператор</p>
                             </span>
                         </div>
                     </div>
@@ -750,46 +828,53 @@
                 <div class="wrap-slide">
                     <div class="costumer-slide">
                         <div class="item">
+
+                            <p class="">Mulţumesc băieţilor ! Aţi făcut treaba voastra la cel mai înalt nivel. Astăzi uitîndumă la fotografii
+                                şi la video, mai simt încă o dată acele emoţii din ziua nunţii. Mulţumesc pentru cadou ,
+                                rapiditate şi buna dispoziţie în timpul filmărilor . Pentru toate evenimentele din viitor
+                                , doar echipa Rec Studio.</p>
+
+                            <img src="images/reviews/georgeta.jpg" alt="georgeta">
                             <div class="name-costumer">
-                                <span>Diana</span>
-                                <img src="public/img/stars.png" alt="">
+                                <span>Georgeta</span>
                             </div>
-                            <span class="data-costumer">Jan 25th 2016</span>
-                            <p class="">Contacted Mini Auto Auction, told them about my budget situation, and asked for some car suggestions.
-                                In just a few minutes they sent me on my email some great offers. Thanks you. Contacted Mini
-                                Auto Auction, told them about my budget situation, and asked for some car suggestions.</p>
+                            <span class="data-costumer">- Sep 25 2017 -</span>
                         </div>
                         <div class="item">
+                            <p class="">Mulţumesc băieţilor ! Aţi făcut treaba voastra la cel mai înalt nivel. Astăzi uitîndumă la fotografii
+                                şi la video, mai simt încă o dată acele emoţii din ziua nunţii. Mulţumesc pentru cadou ,
+                                rapiditate şi buna dispoziţie în timpul filmărilor . Pentru toate evenimentele din viitor
+                                , doar echipa Rec Studio.</p>
+
+                            <img src="images/reviews/georgeta.jpg" alt="georgeta">
                             <div class="name-costumer">
-                                <span>Diana</span>
-                                <img src="public/img/stars.png" alt="">
+                                <span>Georgeta</span>
                             </div>
-                            <span class="data-costumer">Jan 25th 2016</span>
-                            <p class="">Contacted Mini Auto Auction, told them about my budget situation, and asked for some car suggestions.
-                                In just a few minutes they sent me on my email some great offers. Thanks you. Contacted Mini
-                                Auto Auction, told them about my budget situation, and asked for some car suggestions.</p>
+                            <span class="data-costumer">- Sep 25 2017 -</span>
                         </div>
                         <div class="item">
+                            <p class="">Mulţumesc băieţilor ! Aţi făcut treaba voastra la cel mai înalt nivel. Astăzi uitîndumă la fotografii
+                                şi la video, mai simt încă o dată acele emoţii din ziua nunţii. Mulţumesc pentru cadou ,
+                                rapiditate şi buna dispoziţie în timpul filmărilor . Pentru toate evenimentele din viitor
+                                , doar echipa Rec Studio.</p>
+
+                            <img src="images/reviews/georgeta.jpg" alt="georgeta">
                             <div class="name-costumer">
-                                <span>Diana</span>
-                                <img src="public/img/stars.png" alt="">
+                                <span>Georgeta</span>
+                                <span class="data-costumer">- Sep 25 2017 -</span>
                             </div>
-                            <span class="data-costumer">Jan 25th 2016</span>
-                            <p class="">Contacted Mini Auto Auction, told them about my budget situation, and asked for some car suggestions.
-                                In just a few minutes they sent me on my email some great offers. Thanks you. Contacted Mini
-                                Auto Auction, told them about my budget situation, and asked for some car suggestions.</p>
                         </div>
                     </div>
-                    <!-- <div class="custom-controls">
+                    <div class="custom-controls">
                         <button class="prev">
-                            <img src="public/img/arrow.png" alt="">
-                            <img class="active" src="public/img/arrow-active.png" alt="">
+                            <img src="images/arrow-left.png" alt="">
+                            <img class="active" src="images/arrow-left-active.png" alt="">
                         </button>
                         <button class="next">
-                            <img src="public/img/arrow.png" alt="">
-                            <img class="active" src="public/img/arrow-active.png" alt="">
+                            <img src="images/arrow-right.png" alt="">
+                            <img class="active" src="images/arrow-right-active.png" alt="">
                         </button>
-                    </div> -->
+                    </div>
                 </div>
             </div>
             <div class="column-2">
@@ -857,10 +942,15 @@
                 </ul>
             </div>
         </div>
+        <a id="totop" href="#">
+            <span>^</span>
+        </a>
     </fotter>
-
+    <script src="js/jquery-2.1.0.min.js"></script>
+    <script src="js/ios-orientationchange-fix.js"></script>
     <script src="js/tiny-slider.js"></script>
     <script src="js/tiny-slider.helper.ie8.js"></script>
+    <script src="js/jquery.swipebox.js"></script>
     <script src="js/main.js"></script>
 </body>
 

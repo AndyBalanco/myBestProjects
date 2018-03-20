@@ -1,12 +1,18 @@
 #about {
     background: url("/images/about-bg.jpg") no-repeat top center;
     min-height: 903px;
+    @media (max-width: 992px) {
+        background-position: top left -400px;
+    }
     .container {
         display: flex;
         align-items: flex-end;
         min-height: 505px;
         justify-content: right;
         position: relative;
+        @media (max-width: 767px) {
+            min-height: 230px;
+        }
         .text-block {
             position: absolute;
             right: 0;
@@ -14,6 +20,12 @@
             left: auto;
             bottom: 0;
             width: 40%;
+            @media (max-width: 767px) {
+                position: relative;
+                width: 100%;
+                margin-top: 90px;
+                padding: 0 15px;
+            }
             .main-title {
                 font-size: 55px;
                 line-height: 1em;
@@ -34,6 +46,9 @@
             margin-left: 25px;
             display: block;
             position: relative;
+            @media (max-width: 480px) {
+                display: initial;
+            }
             &:before {
                 content: url(../images/arrow-btn.png);
                 width: 20px;

@@ -3,12 +3,18 @@
     justify-content: center;
     align-items: center;
     min-height: 500px;
+    @media (max-width: 992px) {
+        flex-direction: column;
+    }
     .column-1 {
         width: 50%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        @media (max-width: 992px) {
+            width: 100%;
+        }
         .wrap-slide {
             position: relative;
             width: 535px;
@@ -23,33 +29,50 @@
                 @media (max-width: 1200px) {
                     text-align: center;
                 }
+                @media (max-width: 480px) {
+                    margin-bottom: 0; 
+                }
                 .name-costumer {
                     span {
                         color: #000000;
-                        font-size: 20px;
+                        font-size: 28px;
                         font-weight: 700;
+                        text-align: center;
+                        display: block;
+                        margin-top: 15px;
+                        margin-bottom: 5px;
                     }
-                    img {
-                        margin-left: 50px;
-                    }
+                }
+                img {
+                    margin: auto;
+                    text-align: center;
+                    border-radius: 50%;
+                    width: 70px;
+                    height: 70px;
+                    display: block;
                 }
                 .data-costumer {
                     color: #000000;
                     font-size: 14px;
                     font-weight: 400;
+                    text-align: center;
+                    display: block;
                 }
                 p {
                     margin-top: 65px;
+                    text-align: center;
+                    padding: 0 15px;
                 }
             }
             .custom-controls {
                 margin-bottom: 50px;
-                @media (max-width: 1200px) {
-                    text-align: center;
-                }
+                text-align: center;
                 button {
                     padding: 0;
                     position: relative;
+                    background: transparent;
+                    border: none;
+                    outline: none;
                     img {
                         &.active {
                             position: absolute;
@@ -63,9 +86,6 @@
                 .prev {
                     margin-right: 5px;
                     transition-duration: 0.3s;
-                    img {
-                        transform: rotate(180deg);
-                    }
                     &:hover {
                         img {
                             &.active {
@@ -96,5 +116,12 @@
         background: url("../images/bg-testimonial.png") no-repeat top center / cover;
         min-height: 500px;
         padding: 80px;
+        @media (max-width: 992px) {
+            width: 100%;
+            padding: 0 0 25px;
+        }
+        .text-block {
+            padding: 0 15px;
+        }
     }
 }

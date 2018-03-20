@@ -378,7 +378,7 @@ div#n2-ss-1 .n2-ss-icon-has-hover:HOVER .n2-ss-icon-hover {
 }
 .n2-ss-align {
   position: relative;
-  z-index: 0;
+  z-index: 1;
 }
 div#n2-ss-1 .n2-ss-background-animation {
   position: absolute;

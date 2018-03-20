@@ -1,0 +1,15 @@
+#slideshow {
+  background: url("http://www.thecontractorcloud.com/Content/images/technologyleader.jpg") no-repeat top center/cover;
+  min-height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#slideshow h1 {
+  font-size: 110px;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+}
+/*# sourceMappingURL=slideshow.component.css.map */

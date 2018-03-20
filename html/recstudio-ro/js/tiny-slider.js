@@ -1091,9 +1091,9 @@ function tns(options) {
       } else {
         var navHtml = '';
         for (var i = 0; i < slideCount; i++) {
-          navHtml += '<button data-nav="' + i +'" tabindex="-1" aria-selected="false" aria-controls="' + slideId + '-item' + i +'" type="button"></button>';
+          navHtml += '<div data-nav="' + i +'" tabindex="-1" aria-selected="false" aria-controls="' + slideId + '-item' + i +'"></div>';
         }
-        navHtml = '<div data-tns-role="nav" aria-label="Carousel Pagination">' + navHtml + '</div>';
+        navHtml = '<div class="bullets-wrap" data-tns-role="nav" aria-label="Carousel Pagination">' + navHtml + '</div>';
         append(wrapper, navHtml);
 
         navContainer = wrapper.querySelector('[data-tns-role="nav"]');

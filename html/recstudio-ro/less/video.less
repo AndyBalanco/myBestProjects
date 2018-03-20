@@ -1,8 +1,77 @@
 #video {
-    min-height: 400px;
+    min-height: 260px;
     text-align: center;
-    padding: 60px 0;
+    padding: 60px 0 0;
     p {
         line-height: 28px;
+    }
+    margin: auto;
+    .slide-video {
+        @media (max-width: 767px) {
+        }
+        .item {
+            background: url('https://thumbs.gfycat.com/SmoothScalyEmu-max-1mb.gif') no-repeat center center / contain;
+            @media (max-width: 767px) {
+                width: 100%;
+            }
+        }
+    }
+    .customs-controls {
+        margin-bottom: 50px;
+        text-align: center;
+        button {
+            padding: 0;
+            position: relative;
+            background: transparent;
+            border: none;
+            outline: none;
+            img {
+                &.active {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    opacity: 0;
+                    transition-duration: 0.5s;
+                }
+            }
+        }
+        .prev {
+            margin-right: 5px;
+            &:hover {
+                img {
+                    &.active {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+        .next {
+            border-radius: 90px;
+            transition-duration: 0.3s;
+            &:hover {
+                img {
+                    &.active {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+    .bullets-wrap {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+        .bullets {
+            width: 8px;
+            height: 8px;
+            background: #000;
+            margin: 0 2px;
+            text-align: center;
+            border-radius: 50%;
+            cursor: pointer;
+            &.active {
+                background: #ff3a47;
+            }
+        }
     }
 }

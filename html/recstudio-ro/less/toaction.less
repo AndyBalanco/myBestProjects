@@ -5,8 +5,13 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        padding: 45px 0;
+        padding: 45px 15px;
+        @media (max-width: 480px) {
+            flex-direction: column;
+            text-align: center;
+        }
         .column-1 {
+            padding: 0px;
             flex-basis: 80%;
             flex: 1;
             h4 {
@@ -15,10 +20,9 @@
             p {
                 line-height: 28px;
             }
- 
         }
         .column-2 {
-            flex-basis: 20%;           
+            flex-basis: 20%;
             a.btn.btn-to-action {
                 background: #ff3a47;
                 padding: 10px;

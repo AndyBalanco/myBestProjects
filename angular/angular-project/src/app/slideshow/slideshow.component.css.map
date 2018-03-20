@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,CAAC;EACP,UAAU,EAAE,4EAA4E,CAAC,SAAS,CAAC,GAAG,CAAC,YAAc;EACrH,UAAU,EAAE,KAAK;EACjB,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,MAAM;EACvB,WAAW,EAAE,MAAM;CAOtB;;AAZD,AAMI,UANM,CAMN,EAAE,CAAC;EACC,SAAS,EAAE,KAAK;EAChB,UAAU,EAAE,MAAM;EAClB,KAAK,EAAE,IAAI;EACX,cAAc,EAAE,SAAS;CAC5B",
+    "sources": [
+        "slideshow.component.scss"
+    ],
+    "names": [],
+    "file": "slideshow.component.css"
+}
