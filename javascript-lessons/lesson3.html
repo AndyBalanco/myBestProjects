@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Slider oop</title>
+    <style>
+        #gallery .slider,
+        #gallery2 .slider {
+            position: relative;
+            width: 400px;
+            height: 310px;
+        }
+
+        .image {
+            position: absolute;
+            width: 400px;
+            opacity: 0;
+            transition: all ease 1s;
+            transform: translate(5deg);
+        }
+
+        .show {
+            opacity: 1;
+            transition: all ease 1s;
+            transform: translate(5deg);
+            transform:
+        }
+
+        .buttons {
+            position: relative;
+        }
+
+        .next,
+        .prev {
+            cursor: pointer;
+            position: absolute;
+        }
+
+        .next {
+            right: 5px;
+            top: 135px;
+        }
+
+        .prev {
+            left: 5px;
+            top: 135px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="gallery">
+        <div class="slider">
+            <img class="image show" src="img/1.jpg" alt="">
+            <img class="image" src="img/2.jpg" alt="">
+            <img class="image" src="img/3.jpg" alt="">
+            <img class="image" src="img/4.jpg" alt="">
+            <img class="image" src="img/5.jpg" alt="">
+            <img class="image" src="img/6.jpg" alt="">
+            <img class="image" src="img/7.jpg" alt="">
+            <img class="image" src="img/8.jpg" alt="">
+
+
+            <div class="buttons">
+                <button class="prev">
+                    < </button>
+                        <button class="next"> > </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="gallery2">
+        <div class="slider">
+            <img class="image show" src="img/1.jpg" alt="">
+            <img class="image" src="img/2.jpg" alt="">
+            <img class="image" src="img/3.jpg" alt="">
+            <img class="image" src="img/4.jpg" alt="">
+            <img class="image" src="img/5.jpg" alt="">
+            <img class="image" src="img/6.jpg" alt="">
+            <img class="image" src="img/7.jpg" alt="">
+            <img class="image" src="img/8.jpg" alt="">
+
+
+            <div class="buttons">
+                <button class="prev">
+                    < </button>
+                        <button class="next"> > </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        window.onload = function (e) {
+            'use strict'
+            let images = document.querySelectorAll('#gallery .slider .image');
+            let btnPrev = document.querySelector('#gallery .prev');
+            let btnNext = document.querySelector('#gallery .next');
+            let slider = new Slider(images);
+
+            btnPrev.onclick = function () {
+                slider.prev();
+            }
+
+            btnNext.onclick = function () {
+                slider.next();
+            }
+            let images2 = document.querySelectorAll('#gallery2 .slider .image');
+            let btnPrev2 = document.querySelector('#gallery2 .prev');
+            let btnNext2 = document.querySelector('#gallery2 .next');
+            let slider2 = new Slider(images2);
+
+            btnPrev2.onclick = function () {
+                slider2.prev();
+            }
+            btnNext2.onclick = function () {
+                slider2.next();
+            }
+
+            function Slider(images) {
+                this.images = images;
+                let i = 0;
+
+                this.prev = function () {
+                    this.images[i].classList.remove('show');
+                    i--;
+
+                    if (i < 0) {
+                        i = this.images.length - 1;
+                    }
+                    this.images[i].classList.add('show');
+                }
+
+                this.next = function () {
+                    this.images[i].classList.remove('show');
+                    i++;
+
+                    if (i >= this.images.length) {
+                        i = 0;
+                    }
+                    this.images[i].classList.add('show');
+                }
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+
+
+    </script>
+</body>
+
+</html>

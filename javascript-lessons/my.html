@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .block {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .block {}
+
+        .block input {
+            width: 200px;
+            padding: 3px;
+            margin: 5px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .block ul.dropdown {
+            list-style-type: none;
+            margin: 5px 5px 0;
+            padding: 4px;
+            border: 1px solid #aaa;
+            width: 200px;
+            display: none;
+            position: absolute;
+        }
+
+        .block ul.dropdown.show {
+            display: block;
+        }
+
+        .block ul.dropdown li a {
+            text-decoration: none;
+            color: #aaa;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="block">
+        <div class="box">
+            <input type="text" name="country" placeholder="Country">
+            <ul class="dropdown">
+                <li>
+                    <a href="#">Country 1</a>
+                </li>
+                <li>
+                    <a href="#">Country 2</a>
+                </li>
+                <li>
+                    <a href="#">Country 3</a>
+                </li>
+            </ul>
+        </div>
+        <div class="box">
+            <input type="text" name="category" placeholder="Category">
+            <ul class="dropdown">
+                <li>
+                    <a href="#">Category 1</a>
+                </li>
+                <li>
+                    <a href="#">Category 2</a>
+                </li>
+                <li>
+                    <a href="#">Category 3</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+
+        //         let input = document.querySelectorAll('.box input'),
+        //             drop = document.querySelector('.dropdown');
+
+        //         for (i = 0; i < input.length; i++) {
+        // input[i].addEventListener('click', function () {
+
+
+        // })            });
+
+        // }
+
+        let input = document.getElementsByTagName('input'),
+            drop = document.getElementsByClassName('dropdown'),
+            alink = document.querySelectorAll('.dropdown li a'),
+            dropShow = document.querySelectorAll('.dropdown.show');
+
+        for (let i = 0; i < input.length; i++) {
+            input[i].onclick = function () {
+                this.nextElementSibling.classList.toggle('show');
+
+            }
+        }
+
+    for (var i = 0; i < alink.length; i++) {
+        alink[i].addEventListener('click', function (event) {
+            event.preventDefault();
+            var el = event.currentTarget;
+            input.value = el.innerHTML;
+            drop.classList.remove('open');
+
+            var ev = new Event("keyup");
+            input.dispatchEvent(ev); //симулирование события onkeyup
+
+        });
+
+    }
+
+
+    </script>
+
+</body>
+
+</html>

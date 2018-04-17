@@ -1,0 +1,10 @@
+@import "variables";
+header {
+    background: $gray-100;
+    nav.bg-light {
+        background: $gray-200 !important;
+    }
+    .text-block {
+        min-height: 400px;
+    }
+}

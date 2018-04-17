@@ -5,37 +5,123 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/main.css">
-    <title>Lesson 2 If</title>
 
+    <title>Lesson 2</title>
+    <style>
+        #gallery .slider {
+            position: relative;
+            width: 400px;
+            height: 310px;
+        }
+
+        .image {
+            position: absolute;
+            width: 400px;
+            opacity: 0;
+            transition: all ease 1s;
+            transform: translate(5deg);
+        }
+
+        .image.show {
+            opacity: 1;
+            transition: all ease 1s;
+            transform: translate(5deg);
+        }
+
+        .buttons {
+            position: relative;
+        }
+
+        .next,
+        .prev {
+            cursor: pointer;
+            position: absolute;
+        }
+
+        .next {
+            right: 5px;
+            top: 135px;
+        }
+
+        .prev {
+            left: 5px;
+            top: 135px;
+        }
+
+        ul.bullets {
+            display: flex;
+            justify-content: center;
+            width: 400px;
+            margin: 0 ;
+            padding: 0;
+        }
+
+        ul.bullets li {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: red;
+            list-style-type: none;
+            margin: 0 1px;
+            padding: 0;
+        }
+
+        ul.bullets li.active {
+            background: blue;
+        }
+    </style>
 </head>
 
 
 <body>
+    <div id="gallery">
+        <div class="slider">
+            <img class="image show" src="img/1.jpg" alt="">
+            <img class="image" src="img/2.jpg" alt="">
+            <img class="image" src="img/3.jpg" alt="">
+            <img class="image" src="img/4.jpg" alt="">
+            <img class="image" src="img/5.jpg" alt="">
+            <img class="image" src="img/6.jpg" alt="">
+            <img class="image" src="img/7.jpg" alt="">
+            <img class="image" src="img/8.jpg" alt="">
+
+
+            <div class="buttons">
+                <button class="prev">
+                    < </button>
+                        <button class="next"> > </button>
+            </div>
+        </div>
+    </div>
     <script>
 
-var vopros = prompt('Каково официальное название Javascript?');
-var ecma = 'Ecmascript';
+        'use strict'
+        let images = document.querySelectorAll('.image'),
+            prevBtn = document.querySelector('.prev'),
+            nextBtn = document.querySelector('.next'),
+            i = 0;
 
-if(vopros==ecma){
-    alert('Верно!');
-    document.write('Welcome');
-}else{
-    alert('Вы что не знаете навание?');
-    document.write('Иди домой');
-}
+        prevBtn.onclick = function () {
+            images[i].classList.remove('show');
+            i--;
+            if (i < 0) {
+                i = images.length - 1;
+            }
+            images[i].classList.add('show');
+        }
 
-
-
-
-
-
-
-
-
+        nextBtn.onclick = function () {
+            images[i].classList.remove('show');
+            i++;
+            if (i >= images.length) {
+                i = 0;
+            }
+            images[i].classList.add('show');
+        }
+        
     </script>
 
-<!-- <script src="/js/main.js"></script> -->
+    <!-- <script src="/js/main.js"></script> -->
 </body>
 
 </html>

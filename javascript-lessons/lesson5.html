@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Slider oop</title>
+    <style>
+        #gallery .slider,
+        #gallery2 .slider {
+            position: relative;
+            width: 400px;
+            height: 310px;
+        }
+
+        .image {
+            position: absolute;
+            width: 400px;
+            opacity: 0;
+            transition: all ease 4s;
+
+        }
+
+        .show {
+            opacity: 1;
+            transition: all ease 4s;
+            transform:
+        }
+
+        .buttons {
+            position: relative;
+        }
+
+        .next,
+        .prev {
+            cursor: pointer;
+            position: absolute;
+        }
+
+        .next {
+            right: 5px;
+            top: 135px;
+        }
+
+        .prev {
+            left: 5px;
+            top: 135px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="gallery">
+        <div class="slider">
+            <img class="image show" src="img/1.jpg" alt="">
+            <img class="image" src="img/2.jpg" alt="">
+            <img class="image" src="img/3.jpg" alt="">
+            <img class="image" src="img/4.jpg" alt="">
+            <img class="image" src="img/5.jpg" alt="">
+            <img class="image" src="img/6.jpg" alt="">
+            <img class="image" src="img/7.jpg" alt="">
+            <img class="image" src="img/8.jpg" alt="">
+
+
+            <div class="buttons">
+                <button class="prev">
+                    < </button>
+                        <button class="next"> > </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        window.onload = function () {
+            'use strict'
+
+            let slider = new Slider({
+                images: '#gallery .slider .image',
+                btnPrev: '#gallery .prev',
+                btnNext: '#gallery .next',
+                auto: true,
+                rate: 6000
+            });
+
+            function Slider(obj) {
+                this.images = document.querySelectorAll(obj.images);
+                this.auto = obj.auto;
+                this.btnPrev = obj.btnPrev;
+                this.btnNext = obj.btnNext;
+                this.rate = obj.rate || 1000;
+                let i = 0;
+                let slider = this;
+                
+                this.prev = function () {
+                    slider.images[i].classList.remove('show');
+                    i--;
+
+                    if (i < 0) {
+                        i = slider.images.length - 1;
+                    }
+                    slider.images[i].classList.add('show');
+                }
+                
+                this.next = function () {
+                    slider.images[i].classList.remove('show');
+                    i++;
+
+                    if (i >= slider.images.length) {
+                        i = 0;
+                    }
+                    slider.images[i].classList.add('show');
+                }
+
+                document.querySelector(slider.btnPrev).onclick = slider.prev;
+                document.querySelector(slider.btnNext).onclick = slider.next;
+
+                if (slider.auto) {
+                    setInterval(slider.next, slider.rate);
+                }
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+
+
+    </script>
+</body>
+
+</html>

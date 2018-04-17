@@ -1,0 +1,18 @@
+header {
+  background: #f8f9fa; }
+  header nav.bg-light {
+    background: #e9ecef !important; }
+  header .text-block {
+    min-height: 400px; }
+
+main {
+  min-height: 600px;
+  padding: 3rem 0; }
+
+footer {
+  background: #000;
+  color: #fff;
+  min-height: 100px; }
+  footer .copyright {
+    min-height: 100px; }
+/*# sourceMappingURL=main.css.map */
