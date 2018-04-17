@@ -1,0 +1,100 @@
+#reviews {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 500px;
+    .column-1 {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .wrap-slide {
+            position: relative;
+            width: 535px;
+            @media (max-width: 1200px) {
+                margin: 0 auto;
+            }
+            @media (max-width: 767px) {
+                width: 100%;
+            }
+            .item {
+                margin-bottom: 105px;
+                @media (max-width: 1200px) {
+                    text-align: center;
+                }
+                .name-costumer {
+                    span {
+                        color: #000000;
+                        font-size: 20px;
+                        font-weight: 700;
+                    }
+                    img {
+                        margin-left: 50px;
+                    }
+                }
+                .data-costumer {
+                    color: #000000;
+                    font-size: 14px;
+                    font-weight: 400;
+                }
+                p {
+                    margin-top: 65px;
+                }
+            }
+            .custom-controls {
+                margin-bottom: 50px;
+                @media (max-width: 1200px) {
+                    text-align: center;
+                }
+                button {
+                    padding: 0;
+                    position: relative;
+                    img {
+                        &.active {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            opacity: 0;
+                            transition-duration: 0.5s;
+                        }
+                    }
+                }
+                .prev {
+                    margin-right: 5px;
+                    transition-duration: 0.3s;
+                    img {
+                        transform: rotate(180deg);
+                    }
+                    &:hover {
+                        img {
+                            &.active {
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+                .next {
+                    border-radius: 90px;
+                    transition-duration: 0.3s;
+                    &:hover {
+                        img {
+                            &.active {
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .column-2 {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        width: 40%;
+        background: url("../images/bg-testimonial.png") no-repeat top center / cover;
+        min-height: 500px;
+        padding: 80px;
+    }
+}

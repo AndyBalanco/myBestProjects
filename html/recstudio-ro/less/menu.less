@@ -1,0 +1,77 @@
+#menu-wrapper {
+    background: rgba(0, 0, 0, 0.2);
+    position: fixed;
+    height: 60px;
+    width: 70%;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    left: 0;
+    right: 0;
+    top: 30px;
+    z-index: 3;
+    .container {
+        #menu {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            align-items: center;
+            li {
+                padding: 10px 30px;
+                a {
+                    color: #ffffff;
+                    text-decoration: none;
+                    font-size: 18px;
+                    text-transform: normal;
+                    &:hover {
+                        color: #ff3a47;
+                    }
+                }
+                .logo-center {
+                    width: 120px;
+                    margin: auto;
+                }
+                &.main:after {
+                    content: " ";
+                    background: #404040;
+                    width: 15px;
+                    height: 1px;
+                    display: block;
+                    right: -70px;
+                    position: relative;
+                    top: -11px;
+                }
+                &.about:after {
+                    content: " ";
+                    background: #404040;
+                    width: 15px;
+                    height: 1px;
+                    display: block;
+                    right: -53px;
+                    position: relative;
+                    top: -11px;
+                }
+                &.photo:after {
+                    content: " ";
+                    background: #404040;
+                    width: 15px;
+                    height: 1px;
+                    display: block;
+                    right: -53px;
+                    position: relative;
+                    top: -11px;
+                }
+                &.video:after {
+                    content: " ";
+                    background: #404040;
+                    width: 15px;
+                    height: 1px;
+                    display: block;
+                    right: -57px;
+                    position: relative;
+                    top: -11px;
+                }
+            }
+        }
+    }
+}

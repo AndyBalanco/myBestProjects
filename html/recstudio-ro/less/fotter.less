@@ -1,0 +1,49 @@
+#fotter {
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 180px;
+        border-bottom: 1px solid;
+        margin: 30px auto 0;
+        .column-1 {
+            h4 {
+                font-size: 24px;
+                padding: 0;
+                margin: 0 0 10px;
+            }
+            p {
+                padding: 0;
+                margin: 0;
+                line-height: 25px;
+            }
+        }
+        .column-2 {
+            h4 {
+                text-align: right;
+                span {
+                    display: block;
+                    font-size: 44px;
+                }
+            }
+        }
+    }
+    .container.copyright {
+        min-height: 100px;
+        .column-1 {}
+        .column-2 {
+            ul.fotter-menu {
+                display: flex;
+                list-style-type: none;
+                li {
+                    margin-left: 30px;
+                    a {
+                        font-size: 24px;
+                        font-weight: bold;
+                        color: rgb(90, 90, 90);
+                    }
+                }
+            }
+        }
+    }
+}

@@ -8,6 +8,15 @@
     <title>Switch</title>
     <style>
         .inp-wrap {
+<<<<<<< HEAD
+            background: #eee;
+            padding: 5px;
+            max-width: 100%;
+            min-height: auto;
+        }
+
+        #result.green {
+=======
             background: rgb(253, 253, 253);
             position: relative;
             padding: 5px;
@@ -60,11 +69,15 @@
 
         #result.green {
             background: rgb(210, 255, 238);
+>>>>>>> 15672ee64bb3dbde6143f914bc5ccc7aa9c076b4
             color: green;
         }
 
         #result.red {
+<<<<<<< HEAD
+=======
             background: rgb(255, 237, 237);
+>>>>>>> 15672ee64bb3dbde6143f914bc5ccc7aa9c076b4
             color: red;
         }
 
@@ -77,6 +90,57 @@
 <body>
 
     <div class="inp-wrap">
+<<<<<<< HEAD
+        <h3>Проверить наличие продуктов из масссива</h3>
+        <p id="pinfo">Продукты в наличии: </p>
+        <input id="inp" type="text" name="" id="">
+        <button id="btn">Проверить</button>
+        <button id="clear">Стереть</button>
+        <div id="result"></div>
+    </div>
+
+
+    <script>
+        var inp = document.getElementById('inp');
+        var massive = ['Banan', 'Orange', 'Lemon'];
+        var p = document.getElementById('pinfo');
+        var btn = document.getElementById('btn');
+        var clear = document.getElementById('clear');
+        var result = document.getElementById('result');
+
+
+p.innerHTML = 'Продукты в наличии: ' + massive.join(', ') +'.';
+
+        btn.addEventListener('click', function () {
+            switch (inp.value) {
+                case massive[0]:
+                    result.innerHTML = massive[0] + ": Такой фрукт есть в наличии.";
+                    result.removeAttribute('class');
+                    result.classList.add('green');
+                    break;
+                case massive[1]:
+                    result.innerHTML = massive[1] + ': Такой фрукт есть в наличии.';
+                    result.removeAttribute('class');
+                    result.classList.add('green');
+                    break;
+                case massive[2]:
+                    result.innerHTML = massive[2] + ': Такой фрукт есть в наличии.';
+                    result.removeAttribute('class');
+                    result.classList.add('green');
+                    break;
+                default:
+                    result.innerHTML = 'Неизвестный фрукт...';
+                    result.classList.add('red');
+            }
+        });
+
+
+
+
+        clear.addEventListener('click', function () {
+            inp.value = "";
+            result.innerHTML = "";
+=======
         <span class="q">?</span>
         <h3>Проверить стоимость фруктов</h3>
         <p id="pinfo">Фрукты в наличии: </p>
@@ -156,10 +220,16 @@
         clear.addEventListener('click', function () {
             inp.value = "";
             result.innerHTML = "Поиск сброшен";
+>>>>>>> 15672ee64bb3dbde6143f914bc5ccc7aa9c076b4
             result.removeAttribute('class');
         });
 
         if (inp.value == 0) {
+<<<<<<< HEAD
+            result.innerHTML = "Введите что-то."
+            result.classList.add('orange');
+        };
+=======
             inp.value = "";
             result.innerHTML = "Пожалуйста начните ввод."
             result.classList.add('orange');
@@ -186,6 +256,7 @@
             quest.classList.toggle('show');
         })
 
+>>>>>>> 15672ee64bb3dbde6143f914bc5ccc7aa9c076b4
     </script>
 </body>
 
