@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACA,MAAO;EACH,UAAU,EC8BN,OAAS;ED7Bb,mBAAa;IACT,UAAU,EAAE,WAAW;EAE3B,oCAA8B;IAC1B,UAAU,EAAE,KAAK;IACjB,UAAU,EAAE,KAAK;;AERzB,IAAK;EACD,UAAU,EAAE,KAAK;EACjB,OAAO,EAAE,MAAM;;ACDnB,MAAO;EACH,UAAU,EFSN,IAAI;EERR,KAAK,EFFD,IAAI;EEGR,UAAU,EAAE,KAAK;EACjB,iBAAW;IACP,UAAU,EAAE,KAAK",
+"sources": ["header.scss","variables.scss","home.scss","footer.scss"],
+"names": [],
+"file": "main.css"
+}
