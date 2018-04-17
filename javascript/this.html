@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>This</title>
+</head>
+<style>
+    .box {
+        display: flex;
+    }
+    button {
+        border: none;
+        outline: none;
+    }
+
+    .red {
+        background: red;
+        border: none;
+    }
+
+    .content {
+        margin: 5px 0 0;
+        width: 0px;
+        opacity: 0;
+        min-height: 50px;
+        background: #eee;
+        transition: all linear 1s;
+        overflow: hidden;
+    }
+
+    .content.show {
+        width: 200px;
+        opacity: 1;
+    }
+</style>
+
+<body>
+    <div class="box">
+        <div class="content">0</div>
+        <button>click</button>
+        <div class="content">1</div>
+    </div>
+
+    <div class="box">
+        <button>click</button>
+        <div class="content">2</div>
+    </div>
+    <div class="box">
+        <button>click</button>
+        <div class="content">3</div>
+    </div>
+    <div class="box">
+        <button>click</button>
+        <div class="content">4</div>
+    </div>
+    <div class="box">
+        <button>click</button>
+        <div class="content">5</div>
+    </div>
+
+
+    <script>
+        'use strict'
+        // let dog = {
+        //     sound: "woof",
+        //     talk: function () {
+        //         console.log(this.sound);
+        //     }
+        // }
+        // dog.talk(); //woof
+
+        let btn = document.querySelectorAll('button');
+        let cont = document.querySelector('.content');
+
+
+        for (let i = 0; i < btn.length; i++) {
+            btn[i].addEventListener('click', function () {
+                this.classList.toggle('red');
+                this.nextElementSibling.classList.toggle('show');
+            });
+        }
+    </script>
+</body>
+
+</html>

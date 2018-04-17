@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form submit</title>
+    <style>
+        .check {
+            display: block;
+        }
+
+        .check::after {
+            content: "1";
+            width: 10px;
+            height: 10px;
+            background: red;
+            display: block;
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            color: red;
+        }
+
+        .check.err {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="#">
+        <lable for="name">Name: </lable>
+        <input type="text" name="name" class="check">
+        <lable for="email">Email: </lable>
+        <input type="email" name="email" class="check">
+        <lable for="phone">Phone: </lable>
+        <input type="phone" name="phone" class="check">
+        <br>
+        <input type="submit" name="button" id="" value="Submit">
+    </form>
+    <script>
+        window.onload = function (e) {
+            'use strict'
+
+            let inputs = document.querySelectorAll('.check'),
+                sendform = document.querySelector('form'),
+                error = false;
+
+
+            sendform.onsubmit = function (e) {
+                for (let i = 0; i < inputs.length; i++) {
+                    if (inputs[i].value === '') {
+                        inputs[i].classList.add('err');
+                        error = true;
+                    } else {
+                        inputs[i].classList.remove('err');
+                    }
+                }
+                if (error) {
+                    e.preventDefault();
+                }
+            }
+
+            let jqinputs = new OurJquery(inputs);
+
+            
+
+        }
+
+    </script>
+
+</body>
+
+</html>

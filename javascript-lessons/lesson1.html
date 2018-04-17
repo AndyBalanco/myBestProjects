@@ -6,42 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/main.css">
-    <title>Lesson 1 Я Javascript</title>
-
+    <title>Lesson 1</title>
 </head>
 
-<button id="btn">Кликни</button>
-
 <body>
-<button id="btn">Кликни</button>
-     
-<script>
-
-var btn = document.querySelector('#btn');
-
-btn.addEventListener('click', function () {
-    var test = 'Я javascript';
-    alert(test);
-});
-
-    //type в современной разработке вписывать не нужно
-    
+    <input name="inp1" type="text">
+    <button class="btn" name="btn-plus">+</button>
+    <button class="btn" name="btn-minus">-</button>
+    <button class="btn" name="btn-del">/</button>
+    <button class="btn" name="btn-umn">*</button>
+    <input name="inp2" type="text"> =
+    <span class="result">0</span>
 
 
 
+    <script>
+        'use strict'
+        let inp1 = document.querySelector('input[name=inp1]'),
+            inp2 = document.querySelector('input[name=inp2]'),
+            result = document.querySelector('.result');
+
+        document.querySelector('button[name=btn-plus]').onclick = function () {
+            let res = parseInt(inp1.value) + parseInt(inp2.value);
+            result.innerHTML = res;
+        }
+        document.querySelector('button[name=btn-minus]').onclick = function () {
+            let res = parseInt(inp1.value) - parseInt(inp2.value);
+            result.innerHTML = res;
+
+        }
+        document.querySelector('button[name=btn-del]').onclick = function () {
+            let res = parseInt(inp1.value) / parseInt(inp2.value);
+            result.innerHTML = res;
+        }
+        document.querySelector('button[name=btn-umn]').onclick = function () {
+            let res = parseInt(inp1.value) * parseInt(inp2.value);
+            result.innerHTML = res;
+        }
+
+        function calcForm(input1, calc, input2) {
+        }
+    </script>
 
 
-
-
-
-
-
-
-
-
-
-</script>
-<script src="/js/main.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 
 </html>
