@@ -1,4 +1,7 @@
-@import "variables";
-@import "header";
+@import "base/variables";
+@import "base/fonts";
+@import "base/rules";
+
+@import "layout/header";
 @import "home";
-@import "footer";
+@import "layout/footer";
