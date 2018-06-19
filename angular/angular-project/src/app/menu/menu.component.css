@@ -1,0 +1,41 @@
+#menu-wrapper {
+  background: #3cb8ff;
+  padding: 10px;
+}
+
+#menu-wrapper .container {
+  display: flex;
+  align-items: center;
+}
+
+#menu-wrapper .container .logo {
+  background: #fff;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: #3cb8ff;
+  text-align: center;
+  font-weight: bold;
+  line-height: 1.9;
+}
+
+#menu-wrapper .container #menu {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#menu-wrapper .container #menu li {
+  padding-left: 15px;
+}
+
+#menu-wrapper .container #menu li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+#menu-wrapper .container #menu li a:hover {
+  color: #c5eaff;
+}
+/*# sourceMappingURL=menu.component.css.map */
